@@ -1,6 +1,8 @@
 # Các công nghệ , ngôn ngữ , Framework /Lib được dùng trong project
   -Front end :React JS , Redux , Firebase , Material UI , Font Awesome Icon 
+  
   -Back end : ExpressJs , MongoDB , Mongoose , Zing MP3 API , Docker 
+  
   -Các công nghệ khác : JWT ( Xác thực đăng ký , đăng nhập , ) 
 
 # Getting Started with Create React App
