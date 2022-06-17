@@ -35,11 +35,23 @@ module.exports = function Routes(app) {
   //GET Top100
 
   app.get("/top100", (req, res) => {
-    ZingMp3.getTop100().then((data) => {
-      res.status(200).json(data.data)
-    }).catch(e=>{
-      console.log(e)
-      res.status(404).json(e)
-    })
+    ZingMp3.getTop100()
+      .then((data) => {
+        res.status(200).json(data.data);
+      })
+      .catch((e) => {
+        console.log(e);
+        res.status(404).json(e);
+      });
+  });
+
+  app.get("/detailpl", (req, res) => {
+    ZingMp3.getDetailPlaylist("ZWZB969E")
+      .then((data) => {
+        res.status(200).json(data);
+      })
+      .catch((e) => {
+        res.status(404).json(e);
+      });
   });
 };
