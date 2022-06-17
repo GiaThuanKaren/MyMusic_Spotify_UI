@@ -1,5 +1,5 @@
 # Các công nghệ , ngôn ngữ , Framework /Lib được dùng trong project
-  -Front end :React JS , Redux , Firebase , Material UI , Font Awesome Icon 
+  -Front end :React JS , Redux , Firebase , Material UI , Font Awesome Icon ,CSS module
   
   -Back end : ExpressJs , MongoDB , Mongoose , Zing MP3 API , Docker 
   
