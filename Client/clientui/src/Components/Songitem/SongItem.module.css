@@ -1,3 +1,52 @@
 .SongItem{
-    height: 70px;
+    padding: 5px;
+    height: 210px;
+    background: #181818;
+    border-radius: 5px;
+}
+
+.SongItemContainer{
+    height: 100%;
+    position: relative;
+
+}
+.SongItemImg{
+    height: 80%;
+    /* background-color: aliceblue; */
+    width: inherit;
+    overflow: hidden;
+}
+.SongItemImg_img{
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 10px;
+
+}
+.SongItemBtnPlay{
+    bottom: 30%;
+    position: absolute;
+    right: 5%;
+    --height-btn:45px;
+    text-align: center;
+    line-height: var(--height-btn);
+    height:  var(--height-btn);
+    width:  var(--height-btn);
+    border-radius: 50%;
+    background-color: #1fdf64;
+}
+.SongItemBtnPlay:hover{
+    transition: all ease-in-out 500ms;
+    background-color: #23b85a;
+}
+.SongItemInfo{
+    width: 80%;
+    height: 20%;
+}
+
+.SongItem_Artists,
+.SongItem_NameSong{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }

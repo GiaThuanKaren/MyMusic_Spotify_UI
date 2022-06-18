@@ -1,6 +1,6 @@
 .ListSongContainer{
     min-height: 70px;
-
+    margin: 5px 0;
 }
 .ListSongHeading{
     display: flex;

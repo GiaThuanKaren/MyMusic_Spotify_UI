@@ -5,10 +5,12 @@
     height: 100vh;
     overflow-x: hidden;
     overflow-y: auto;
-    /* background-color: red; */
 }
 .HomeContainer{
     height: 1000vh;
+    background-color :#000;
+    color: #fff;
+
 }
 .HomeSong{
     margin-top: var(--height-header);

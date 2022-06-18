@@ -4,5 +4,6 @@
     height: 70px;
     background-color: darkblue;
     position: fixed;
+    z-index: 5;
     top: 0;
 }
