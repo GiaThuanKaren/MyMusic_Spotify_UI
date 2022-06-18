@@ -35,6 +35,7 @@
     padding: 2px 5px;
     margin: 5px 0;
     display: flex;
+    /* font-size: 1rem; */
     align-items: center;
     /* justify-content: space-between; */
 }
@@ -43,9 +44,15 @@
     height: 200px;
     overflow-y: auto;
     overflow-x: hidden;
-    background-color: rgb(119, 119, 103);
+    font-size: 1rem;
+    /* background-color: rgb(119, 119, 103); */
 }
 .TextHover:hover{
     transition: all ease-in-out 500ms;
     color: #fff;
+}
+
+.TextActiveHover{
+    color: #fff;
+
 }

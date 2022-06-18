@@ -1,15 +1,20 @@
 import { Grid } from "@mui/material";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { useCurrentPath } from "../../CustomHooks/useCurrentPath";
 import { FontAwesomeIcon, IconSolid } from "../../util/FontAwesome/FontAwesome";
 import styles from "./LeftSideBar.module.css";
 FontAwesomeIcon;
 function LeftSideBar() {
+  // const currentPath = useCurrentPath();
+  const [select, SetSelect] = useState("");
   const [properties, SetProperties] = useState({
     dataPlayList: [],
     isFetching: true,
   });
-
+  const GetAttr = function (ele) {
+    console.log(e);
+  };
   useEffect(() => {
     fetch(`http://localhost:5000/top100`)
       .then((res) => res.json())
@@ -22,7 +27,7 @@ function LeftSideBar() {
         console.log(items);
       });
   }, []);
-  console.log(properties.dataPlayList);
+  // console.log(properties.dataPlayList);
   return (
     <>
       <Grid item lg={3} md={4} sm={3}>
@@ -47,7 +52,13 @@ function LeftSideBar() {
           </div>
           <ul className={`${styles.ListItem}`}>
             <Link
-              className={`${styles.LinkTag}  ${styles.TextHover}  ${styles.ItemLeftMenu}`}
+              onClick={(e) => {
+                // SetSelect(e.target);
+                // console.log(e.target.innerHTML,e.target.parentElement);
+              }}
+              className={`${styles.LinkTag}   ${select == styles.TextHover}  ${
+                styles.ItemLeftMenu
+              }`}
               to="/"
             >
               <FontAwesomeIcon
@@ -81,36 +92,22 @@ function LeftSideBar() {
           <ul className={`${styles.ListItem}`}>
             <Link
               className={`${styles.LinkTag} ${styles.TextHover}  ${styles.ItemLeftMenu}`}
-              to="/createplist"
+              to="/createNewPL"
             >
-              <svg
-                style={{ height: "100%", color: "white" }}
-                role="img"
-                height="12"
-                width="12"
-                aria-hidden="true"
-                viewBox="0 0 16 16"
-                className="Svg-sc-1bi12j5-0 EQkJl"
-              >
-                <path d="M15.25 8a.75.75 0 01-.75.75H8.75v5.75a.75.75 0 01-1.5 0V8.75H1.5a.75.75 0 010-1.5h5.75V1.5a.75.75 0 011.5 0v5.75h5.75a.75.75 0 01.75.75z"></path>
-              </svg>
+              <FontAwesomeIcon
+                className={`${styles.Icon}`}
+                icon={IconSolid.faMusic}
+              />
               <p>Tạo Playlist</p>
             </Link>
             <Link
               className={`${styles.LinkTag}  ${styles.TextHover} ${styles.ItemLeftMenu}`}
               to="/liked"
             >
-              <svg
-                style={{ height: "100%", color: "white" }}
-                role="img"
-                height="12"
-                width="12"
-                aria-hidden="true"
-                viewBox="0 0 16 16"
-                className="Svg-sc-1bi12j5-0 EQkJl"
-              >
-                <path d="M15.724 4.22A4.313 4.313 0 0012.192.814a4.269 4.269 0 00-3.622 1.13.837.837 0 01-1.14 0 4.272 4.272 0 00-6.21 5.855l5.916 7.05a1.128 1.128 0 001.727 0l5.916-7.05a4.228 4.228 0 00.945-3.577z"></path>
-              </svg>
+              <FontAwesomeIcon
+                className={`${styles.Icon}`}
+                icon={IconSolid.faHeart}
+              />
               <p>Bài hát đã thích</p>
             </Link>
           </ul>
@@ -121,9 +118,16 @@ function LeftSideBar() {
                   return (
                     <>
                       <li
+                        onClick={() => {
+                          SetSelect(item.title);
+                        }}
                         key={item.encodeId}
                         idsong={item.encodeId}
-                        className={`${styles.LinkTag} ${styles.TextHover} ${styles.ItemLeftMenu}`}
+                        className={`${styles.LinkTag} ${
+                          select == item.title
+                            ? styles.TextActiveHover
+                            : styles.TextHover
+                        } ${styles.ItemLeftMenu}`}
                       >
                         {item.title}
                       </li>

@@ -1,4 +1,17 @@
+:root{
+    --height-header: 70px
+}
 .Main-Container{
     height: 100vh;
-    background-color: red;
+    overflow-x: hidden;
+    overflow-y: auto;
+    /* background-color: red; */
+}
+.HomeContainer{
+    height: 1000vh;
+}
+.HomeSong{
+    margin-top: var(--height-header);
+    min-height: 0px;
+    width: 100%;
 }

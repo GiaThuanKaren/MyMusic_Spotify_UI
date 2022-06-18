@@ -1,0 +1,11 @@
+.ListSongContainer{
+    min-height: 70px;
+
+}
+.ListSongHeading{
+    display: flex;
+    justify-content: space-between;
+}
+.WrapListSong{
+    flex-wrap: wrap
+}
