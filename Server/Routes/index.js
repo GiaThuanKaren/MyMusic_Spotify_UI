@@ -9,7 +9,7 @@ module.exports = function Routes(app) {
       .then((data) => {
         res.json({
           pageNum,
-          result: data.data,
+          ...data.data
         });
       })
       .catch((e) => {

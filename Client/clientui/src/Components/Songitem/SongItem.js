@@ -3,7 +3,7 @@ import { Grid } from "@mui/material";
 import React from "react";
 import { IconSolid } from "../../util/FontAwesome/FontAwesome";
 import style from "./SongItem.module.css";
-function SongItem({ isWrap, IsHaveBtn }) {
+function SongItem({tittle,Artists,Thumbnail, isWrap, IsHaveBtn }) {
   return (
     <Grid item lg={2} md={2} sm={3} xs={4}>
       <div className={`${style.SongItem}`}>
@@ -11,19 +11,19 @@ function SongItem({ isWrap, IsHaveBtn }) {
           <div className={`${style.SongItemImg}`}>
             <img
               className={`${style["SongItemImg_img"]}`}
-              src="https://i.scdn.co/image/ab67656300005f1f3e1bae386c6a6caf964d36d1"
+              src={Thumbnail ? Thumbnail:"https://i.scdn.co/image/ab67656300005f1f3e1bae386c6a6caf964d36d1"}
             />
             {IsHaveBtn ? (
               <>
-                <div className={`${style.SongItemBtnPlay}`}>
+                <div className={`${style.SongItezmBtnPlay}`}>
                   <FontAwesomeIcon icon={IconSolid.faPlay} />
                 </div>
               </>
             ) : null}
           </div>
           <div className={`${style.SongItemInfo}`}>
-            <h4 className={`${style.SongItem_NameSong}`}>Name Song</h4>
-            <p className={`${style.SongItem_Artists}`}>Name Artits.....</p>
+            <h4 className={`${style.SongItem_NameSong}`}>{tittle ? tittle : "Name Song"}</h4>
+            <p className={`${style.SongItem_Artists}`}>{Artists ? Artists : "Name Artits....."}</p>
           </div>
         </div>
       </div>

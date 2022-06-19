@@ -5,6 +5,16 @@
     border-radius: 5px;
 }
 
+@keyframes ClimbUp{
+    from {
+        transform: translateY(40%);
+        opacity: 0;
+    }
+    to{
+        transform: translateY(0%);
+        opacity: 1
+    }
+}
 .SongItemContainer{
     height: 100%;
     position: relative;
@@ -34,6 +44,7 @@
     width:  var(--height-btn);
     border-radius: 50%;
     background-color: #1fdf64;
+    display: none;
 }
 .SongItemBtnPlay:hover{
     transition: all ease-in-out 500ms;
