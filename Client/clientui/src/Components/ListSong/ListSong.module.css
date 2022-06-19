@@ -1,10 +1,12 @@
 .ListSongContainer{
     min-height: 70px;
-    margin: 20px 0;
+    margin: 25px 0;
 }
 .ListSongHeading{
     display: flex;
     justify-content: space-between;
+    padding: 2px 5px;
+    margin: 25px 0;
 }
 .WrapListSong{
     flex-wrap: wrap

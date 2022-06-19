@@ -3,10 +3,10 @@ import { Grid } from "@mui/material";
 import React from "react";
 import { IconSolid } from "../../util/FontAwesome/FontAwesome";
 import style from "./SongItem.module.css";
-function SongItem({tittle,Artists,Thumbnail, isWrap, IsHaveBtn }) {
+function SongItem({IdSongItem,tittle,Artists,Thumbnail, isWrap, IsHaveBtn }) {
   return (
-    <Grid item lg={2} md={2} sm={3} xs={4}>
-      <div className={`${style.SongItem}`}>
+    <Grid  item lg={2} md={2} sm={3} xs={4}>
+      <div idsong={IdSongItem} className={`${style.SongItem}`}>
         <div className={`${style.SongItemContainer}`}>
           <div className={`${style.SongItemImg}`}>
             <img

@@ -6,4 +6,28 @@
     position: fixed;
     z-index: 5;
     top: 0;
+    display: flex;
+    align-items: center;
+    padding: 2px 10px;
+}
+.GroupIconHeader{
+    display: flex;
+    align-content: center;
+    width: 70px;
+    justify-content: space-between;
+}
+
+
+.IconHeader{
+    --height-icon-box:20px;
+    height: var(--height-icon-box);
+    width: var(--height-icon-box);
+    border-radius: 50%;
+    color: #fff;
+    background-color: black;
+    padding: 5px;
+    text-align: center;
+    line-height: var(--height-icon-box);
+
+
 }

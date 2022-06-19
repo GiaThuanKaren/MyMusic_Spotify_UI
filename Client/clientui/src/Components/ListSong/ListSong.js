@@ -11,7 +11,8 @@ function ListSong({
   RowSpacing,
   ListArr,
 }) {
-  console.log(ListArr, " 14");
+  if(ListArr.length>=6) ListArr=ListArr.slice(0,6)
+  // console.log(ListArr, " 14");
   const [properties, SetProperties] = useState({
     data: [],
     page: 0,
@@ -36,7 +37,7 @@ function ListSong({
         {ListArr
           ? ListArr.map(function (item, idx) {
               return (
-                <SongItem tittle={item.title} Thumbnail={item.thumbnail} />
+                <SongItem IdSongItem={item.encodeId} tittle={item.title} Thumbnail={item.thumbnail} />
               );
             })
           : null}

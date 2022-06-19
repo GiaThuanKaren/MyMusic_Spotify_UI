@@ -31,10 +31,9 @@ function RightSideBar() {
     <>
       <Grid item lg={9} md={10} xs={12} sm={9}>
         <div className={styles["Main-Container"]}>
+          <Header />
           <div className={`${styles.HomeContainer}`}>
-            <Header />
             <div className={`${styles.HomeSong}`}>
-              
               {properties.PlayList1.length == 0
                 ? null
                 : properties.PlayList1.map(function (item, idx) {

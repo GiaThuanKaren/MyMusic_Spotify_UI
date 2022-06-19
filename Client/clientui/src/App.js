@@ -16,6 +16,7 @@ function App() {
       <LeftSideBar/>
       <Routes>
         <Route path="/" element={<RightSideBar />}>
+          <Route path="show/:id" />
         </Route>
         <Route path="/search" element={<Search />}/>
         <Route path="/library" element={<Libraray />}/>

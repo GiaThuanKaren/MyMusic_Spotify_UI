@@ -1,0 +1,14 @@
+.PlayBtn{
+    --height-playbtn:50px;
+    width: var(--height-playbtn);
+    height: var(--height-playbtn);
+    border-radius: 50%;
+    text-align: center;
+    line-height: var(--height-playbtn);
+    background-color: rgb(80, 184, 80);
+}
+.PlayTitleComp{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
