@@ -9,6 +9,7 @@ import Search from './Components/Search/Search';
 import Libraray from './Components/Library/Libraray';
 import CreatePlayList from './Components/CreatePlayList/CreatePlayList';
 import Liked from './Components/Liked/Liked';
+import Player from './Components/Player/Player';
 function App() {
   return (
     <>
@@ -23,6 +24,7 @@ function App() {
         <Route path="/createNewPL" element={<CreatePlayList />}/>
         <Route path="/liked" element={<Liked />}/>
       </Routes>
+      <Player />
     </Grid>
     </>
   );

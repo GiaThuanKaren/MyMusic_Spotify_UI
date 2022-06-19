@@ -1,0 +1,32 @@
+.MainPlayerBottom {
+  height: 70px;
+  position: fixed;
+  bottom: 0;
+  color: aliceblue;
+  /* font-size: 2rem; */
+  /* display: flex; */
+  padding: 2px 5px;
+  justify-content: space-between;
+  right: 0;
+  left: 0;
+  background-color: black;
+}
+.ControlSong {
+}
+.ControlSongBtn{
+    display: flex;
+    justify-content: center;
+
+}
+
+.BtnControlSong{
+    margin: 0 10px;
+}
+
+.TimeSong{
+    display: flex;
+    
+}
+.RangeTimeSong{
+    width: 100%;
+}

@@ -15,6 +15,11 @@ function LeftSideBar() {
   const GetAttr = function (ele) {
     console.log(e);
   };
+  const SetActive=function(ele){
+    console.log(document.querySelectorAll(".LeftSideBar_LinkTag__Ema9C"))
+    // console.log(ele.target.innerHTML,ele.target.parentElement);
+
+  }
   useEffect(() => {
     fetch(`http://localhost:5000/top100`)
       .then((res) => res.json())
@@ -51,21 +56,21 @@ function LeftSideBar() {
             </Link>
           </div>
           <ul className={`${styles.ListItem}`}>
+            
             <Link
               onClick={(e) => {
-                // SetSelect(e.target);
-                // console.log(e.target.innerHTML,e.target.parentElement);
+                SetActive(e)
               }}
               className={`${styles.LinkTag}   ${select == styles.TextHover}  ${
                 styles.ItemLeftMenu
-              }`}
+              } ` }
               to="/"
             >
               <FontAwesomeIcon
                 className={`${styles.Icon} `}
                 icon={IconSolid.faHome}
               />
-              <p>Trang Chủ</p>
+              <p className="textNotActive">Trang Chủ</p>
             </Link>
             <Link
               className={`${styles.LinkTag}  ${styles.TextHover}  ${styles.ItemLeftMenu}`}
@@ -75,7 +80,7 @@ function LeftSideBar() {
                 className={`${styles.Icon}`}
                 icon={IconSolid.faSearch}
               />
-              <p>Tìm Kiếm</p>
+              <p className="textNotActive">Tìm Kiếm</p>
             </Link>
             <Link
               className={`${styles.LinkTag}  ${styles.TextHover}  ${styles.ItemLeftMenu}`}
