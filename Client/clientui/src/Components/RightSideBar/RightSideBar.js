@@ -1,11 +1,13 @@
 import { Grid } from "@mui/material";
 import { useEffect, useState } from "react";
+import { Outlet } from "react-router-dom";
 import { FindMany } from "../../util/Functions/FindMany";
+import DetailPlaylist from "../DetailPlaylist/DetailPlaylist";
 import Header from "../Header/Header";
 import ListSong from "../ListSong/ListSong";
 import styles from "./RightSideBar.module.css";
 
-function RightSideBar() {
+export function MainHomeRightSideBar() {
   const [properties, SetProperties] = useState({
     PlayList1: [],
   });
@@ -26,29 +28,39 @@ function RightSideBar() {
         console.log(e);
       });
   }, []);
+  return (
+    <>
+      <div className={`${styles.HomeContainer}`}>
+        <div className={`${styles.HomeSong}`}>
+          {properties.PlayList1.length == 0
+            ? null
+            : properties.PlayList1.map(function (item, idx) {
+                return (
+                  <ListSong
+                    tittle={item.title}
+                    IsHaveBtnALL
+                    ColSpacing={3}
+                    IsWrap={true}
+                    ListArr={item.items ? item.items : []}
+                  />
+                );
+              })}
+        </div>
+      </div>
+    </>
+  );
+}
+
+function RightSideBar() {
+  
 
   return (
     <>
       <Grid item lg={9} md={10} xs={12} sm={9}>
         <div className={styles["Main-Container"]}>
           <Header />
-          <div className={`${styles.HomeContainer}`}>
-            <div className={`${styles.HomeSong}`}>
-              {properties.PlayList1.length == 0
-                ? null
-                : properties.PlayList1.map(function (item, idx) {
-                    return (
-                      <ListSong
-                        tittle={item.title}
-                        IsHaveBtnALL
-                        ColSpacing={3}
-                        IsWrap={true}
-                        ListArr={item.items ? item.items : []}
-                      />
-                    );
-                  })}
-            </div>
-          </div>
+          <Outlet />
+          {/* <MainHomeRightSideBar  properties={properties} /> */}
         </div>
       </Grid>
     </>

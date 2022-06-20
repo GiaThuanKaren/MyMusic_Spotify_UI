@@ -4,3 +4,11 @@ export const SetActivePlay = function (payload) {
     payload: payload,
   };
 };
+
+export const SetEleToGlobal = function(payload){
+  return {
+    type:"SetEleGlobal",
+    payload:payload
+
+  }
+}

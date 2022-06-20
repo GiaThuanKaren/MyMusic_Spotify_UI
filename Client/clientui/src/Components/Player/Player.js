@@ -1,38 +1,48 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Grid, Icon } from "@mui/material";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { SetActivePlay } from "../../Redux/Actions/Actions";
+import { SetActivePlay, SetEleToGlobal } from "../../Redux/Actions/Actions";
 import { IconSolid } from "../../util/FontAwesome/FontAwesome";
+import SetStatusEleAudio from "../../util/Functions/SetStatusEleAudio";
 import style from "./Player.module.css";
 
 function Player() {
   const GlobalState = useSelector((state) => state);
-  const EleAudio = useRef();
-  console.log(GlobalState, "State Global");
-  const [song, setSong] = useState("");
-  const [timeSong,SettimeSong]=useState({
-      timeCurrent:"",
-      duration:"",
-      PerCent:0
-  })
+  const EleAudio = useRef(null);
+  // console.log(GlobalState, "State Global");
   const dispacth = useDispatch();
+  const [song, setSong] = useState("");
+  const [timeSong, SettimeSong] = useState({
+    timeCurrent: "",
+    duration: "",
+    PerCent: 0,
+  });
   const SetStatusPlaying = function () {
+    
+    // SetStatusEleAudio(EleAudio.current,GlobalState.isPlaying)
     dispacth(SetActivePlay(!GlobalState.isPlaying));
   };
-  const ConvertTime = function(time){
-      
-  }
+  const ConvertTimePlaying = function (time) {
+    let min = Math.floor(time / 60);
+    let sec = Math.floor(time % 60);
+    if(min<10) min=`0${min}`
+    if(sec<10) sec=`0${sec}`
+    // console.log(min, sec);
+    return `${min}:${sec}`;
+  };
+  // console.log(EleAudio, EleAudio.current , " 33 ")
   useEffect(() => {
     fetch(`http://localhost:5000/song/ZUI7WC8C`)
       .then((res) => res.json())
       .then((item) => {
-        const {} = item.data;
+        // const {} = item.data;
         // console.log(item.data["128"]);
         setSong(item.data["128"]);
       });
+    
   }, []);
-//   console.log(song, "25");
+    // console.log(GlobalState.isPlaying, "Player",typeof EleAudio.current);
   return (
     <Grid className={`${style.MainPlayerBottom}`} container>
       <Grid item lg={3} md={2}></Grid>
@@ -64,33 +74,48 @@ function Player() {
           </div>
           <div className={`${style.TimeSong}`}>
             <audio
-            onPlaying={()=>{
-                console.log("Is Playing True")
-            }} 
-            onPause={()=>{
-                console.log("Is Playing False")
-            }}
-            onTimeUpdate={(e)=>{
-                // console.log(e.target.currentTime)
-                let progress = Math.floor(e.target.currentTime / e.target.duration *100)
-                console.log(progress)
+              
+              onLoadedData={()=>{
+                console.log("Loaded Data ")
+                dispacth(SetEleToGlobal(EleAudio.current))
                 SettimeSong({
-                    ...timeSong,
-                    PerCent:progress
+                  ...timeSong,
+                  duration:ConvertTimePlaying(EleAudio.current.duration)
                 })
-                
-            }}
-            ref={EleAudio} controls src={song}></audio>
-            <p>12:00</p>
+              }}
+              onPlaying={() => {
+                // console.log("Is Playing True");
+              }}
+              onPause={() => {
+                // console.log("Is Playing False");
+              }}
+              onTimeUpdate={(e) => {
+                let timecur=ConvertTimePlaying(e.target.currentTime);
+                // console.log(e.target.currentTime)
+                let progress = Math.floor(
+                  (e.target.currentTime / e.target.duration) * 100
+                );
+                // console.log(progress);
+                SettimeSong({
+                  ...timeSong,
+                  PerCent: progress,
+                  timeCurrent:timecur
+                });
+              }}
+              ref={EleAudio}
+              s
+              src={song}
+            ></audio>
+            <p>{timeSong.timeCurrent ? timeSong.timeCurrent : "00 : 00"}</p>
             <input
               className={`${style.RangeTimeSong}`}
               type="range"
-              value={timeSong.PerCent}
+              value={timeSong.PerCent ? timeSong.PerCent : 0}
               max={100}
               min={0}
               step={1}
             />
-            <p>12:00</p>
+            <p>{timeSong.duration ? timeSong.duration: "00:00"}</p>
           </div>
         </div>
       </Grid>

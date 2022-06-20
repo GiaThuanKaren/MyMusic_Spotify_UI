@@ -37,7 +37,7 @@ function ListSong({
         {ListArr
           ? ListArr.map(function (item, idx) {
               return (
-                <SongItem IdSongItem={item.encodeId} tittle={item.title} Thumbnail={item.thumbnail} />
+                <SongItem key={item.encodeId} IdSongItem={item.encodeId} tittle={item.title} Thumbnail={item.thumbnail} />
               );
             })
           : null}

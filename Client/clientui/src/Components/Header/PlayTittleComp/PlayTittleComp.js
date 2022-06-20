@@ -8,22 +8,24 @@ function PlayTittleComp({ tittle }) {
   const GlobalState = useSelector((state) => state);
   const dispatch = useDispatch();
   const SetStatusPlaying = function () {
-    dispacth(SetActivePlay(!GlobalState.isPlaying));
+    dispatch(SetActivePlay(!GlobalState.isPlaying));
   };
+  console.log("PlayTittle Comp ", GlobalState.isPlaying);
   return (
     <div className={`${style.PlayTitleComp}`}>
       <div className={`${style.PlayBtn}`}>
         {GlobalState.isPlaying ? (
           <FontAwesomeIcon
             onClick={() => {
-              dispatch(SetActivePlay(!GlobalState.isPlaying));
+              SetStatusPlaying();
+              // dispatch(SetActivePlay(!GlobalState.isPlaying));
             }}
             icon={IconSolid.faPause}
           />
         ) : (
           <FontAwesomeIcon
             onClick={() => {
-              dispatch(SetActivePlay(!GlobalState.isPlaying));
+              SetStatusPlaying();
             }}
             icon={IconSolid.faPlay}
           />
