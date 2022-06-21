@@ -45,14 +45,16 @@ module.exports = function Routes(app) {
       });
   });
 
-  app.get("/detailpl", (req, res) => {
+  app.get("/detail/:id", (req, res) => {
     // Promise.all([ZingMp3.getDetailPlaylist("ZWZB969E"), ZingMp3.getTop100()])
     //   .then(res=>{
     //     console.log(res)
     //   })
-    let idPlaylist = req.params.idPlaylist ? req.params.idPlaylist : "";
-    ZingMp3.getDetailPlaylist("ZWZB969E")
-      .then((data) => {
+    
+    let idPlaylist = req.params.id ? req.params.id : "";
+    console.log(idPlaylist)
+    ZingMp3.getDetailPlaylist(idPlaylist)
+      .then((data) => {                   
         // console.log(data.data.song.items)
         let ArrSong = data.data.song.items;
         let IdSongArr = ArrSong.map(function (item, idx) {

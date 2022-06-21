@@ -56,7 +56,7 @@ function RightSideBar() {
 
   return (
     <>
-      <Grid item lg={9} md={10} xs={12} sm={9}>
+      <Grid item lg={9} md={8} xs={12} sm={9}>
         <div className={styles["Main-Container"]}>
           <Header />
           <Outlet />
