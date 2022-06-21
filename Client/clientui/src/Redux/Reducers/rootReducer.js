@@ -2,7 +2,8 @@ import SetStatusEleAudio from "../../util/Functions/SetStatusEleAudio";
 
 const InitialState={
     isPlaying:false,
-    EleAudio:null
+    EleAudio:null,
+    Song:"",
 }
 
 const rootReducer=function(state=InitialState,action){
@@ -23,6 +24,12 @@ const rootReducer=function(state=InitialState,action){
                 EleAudio:action.payload
             }
             break;
+        }
+        case "SetSong":{
+            return {
+                ...state,
+                Song:action.payload
+            }
         }
         default:{
             return state

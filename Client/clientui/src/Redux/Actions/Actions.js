@@ -12,3 +12,10 @@ export const SetEleToGlobal = function(payload){
 
   }
 }
+
+export const SetSongToGlobal=function(payload){
+  return {
+    type:"SetSong",
+    payload:payload
+  }
+}

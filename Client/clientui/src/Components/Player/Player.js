@@ -18,38 +18,47 @@ function Player() {
     duration: "",
     PerCent: 0,
   });
+  // console.log(GlobalState.Song)
   const SetStatusPlaying = function () {
-    
     // SetStatusEleAudio(EleAudio.current,GlobalState.isPlaying)
     dispacth(SetActivePlay(!GlobalState.isPlaying));
   };
   const ConvertTimePlaying = function (time) {
     let min = Math.floor(time / 60);
     let sec = Math.floor(time % 60);
-    if(min<10) min=`0${min}`
-    if(sec<10) sec=`0${sec}`
+    if (min < 10) min = `0${min}`;
+    if (sec < 10) sec = `0${sec}`;
     // console.log(min, sec);
     return `${min}:${sec}`;
   };
   // console.log(EleAudio, EleAudio.current , " 33 ")
   useEffect(() => {
-    fetch(`http://localhost:5000/song/ZUI7WC8C`)
-      .then((res) => res.json())
-      .then((item) => {
-        // const {} = item.data;
-        // console.log(item.data["128"]);
-        setSong(item.data["128"]);
-      });
-    
-  }, []);
-    // console.log(GlobalState.isPlaying, "Player",typeof EleAudio.current);
+    if (GlobalState.Song != "") {
+      console.log("New ID ",GlobalState.Song)
+      fetch(`http://localhost:5000/song/${GlobalState.Song}`)
+        .then((res) => res.json())
+        .then((item) => {
+          // const {} = item.data;
+          console.log(item.data["128"]);
+          setSong(item.data["128"]);
+        });
+    }
+  }, [GlobalState.Song]);
+  // console.log(GlobalState.isPlaying, "Player",typeof EleAudio.current);
   return (
     <Grid className={`${style.MainPlayerBottom}`} container>
       <Grid item lg={3} md={2}></Grid>
       <Grid item lg={6} md={8}>
         <div className={`${style.ControlSong}`}>
           <div className={`${style.ControlSongBtn}`}>
-            <FontAwesomeIcon icon={IconSolid.faBackwardFast} />
+            <FontAwesomeIcon
+              className={style.BtnControlSong}
+              icon={IconSolid.faShuffle}
+            />
+            <FontAwesomeIcon
+              className={style.BtnControlSong}
+              icon={IconSolid.faBackwardFast}
+            />
             {GlobalState.isPlaying ? (
               <FontAwesomeIcon
                 className={style.BtnControlSong}
@@ -71,17 +80,20 @@ function Player() {
               className={style.BtnControlSong}
               icon={IconSolid.faForwardFast}
             />
+            <FontAwesomeIcon
+              className={style.BtnControlSong}
+              icon={IconSolid.faRepeat}
+            />
           </div>
           <div className={`${style.TimeSong}`}>
             <audio
-              
-              onLoadedData={()=>{
-                console.log("Loaded Data ")
-                dispacth(SetEleToGlobal(EleAudio.current))
+              onLoadedData={() => {
+                console.log("Loaded Data ");
+                dispacth(SetEleToGlobal(EleAudio.current));
                 SettimeSong({
                   ...timeSong,
-                  duration:ConvertTimePlaying(EleAudio.current.duration)
-                })
+                  duration: ConvertTimePlaying(EleAudio.current.duration),
+                });
               }}
               onPlaying={() => {
                 // console.log("Is Playing True");
@@ -90,7 +102,7 @@ function Player() {
                 // console.log("Is Playing False");
               }}
               onTimeUpdate={(e) => {
-                let timecur=ConvertTimePlaying(e.target.currentTime);
+                let timecur = ConvertTimePlaying(e.target.currentTime);
                 // console.log(e.target.currentTime)
                 let progress = Math.floor(
                   (e.target.currentTime / e.target.duration) * 100
@@ -99,7 +111,7 @@ function Player() {
                 SettimeSong({
                   ...timeSong,
                   PerCent: progress,
-                  timeCurrent:timecur
+                  timeCurrent: timecur,
                 });
               }}
               ref={EleAudio}
@@ -115,7 +127,7 @@ function Player() {
               min={0}
               step={1}
             />
-            <p>{timeSong.duration ? timeSong.duration: "00:00"}</p>
+            <p>{timeSong.duration ? timeSong.duration : "00:00"}</p>
           </div>
         </div>
       </Grid>
