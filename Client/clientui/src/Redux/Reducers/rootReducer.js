@@ -3,7 +3,7 @@ import SetStatusEleAudio from "../../util/Functions/SetStatusEleAudio";
 const InitialState={
     isPlaying:false,
     EleAudio:null,
-    Song:"",
+    Song:localStorage.getItem("song") ? JSON.parse(localStorage.getItem("song")) : "ZW8I78UO",
 }
 
 const rootReducer=function(state=InitialState,action){

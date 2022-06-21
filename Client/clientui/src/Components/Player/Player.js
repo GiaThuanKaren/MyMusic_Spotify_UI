@@ -44,6 +44,7 @@ function Player() {
         });
     }
   }, [GlobalState.Song]);
+  // console.log(" Player runiing",EleAudio)
   // console.log(GlobalState.isPlaying, "Player",typeof EleAudio.current);
   return (
     <Grid className={`${style.MainPlayerBottom}`} container>
@@ -115,7 +116,7 @@ function Player() {
                 });
               }}
               ref={EleAudio}
-              s
+              
               src={song}
             ></audio>
             <p>{timeSong.timeCurrent ? timeSong.timeCurrent : "00 : 00"}</p>

@@ -6,6 +6,7 @@ export const SetActivePlay = function (payload) {
 };
 
 export const SetEleToGlobal = function(payload){
+  console.log("Set Ele yes")
   return {
     type:"SetEleGlobal",
     payload:payload

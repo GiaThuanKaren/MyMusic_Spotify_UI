@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { IconSolid } from "../../util/FontAwesome/FontAwesome";
 import { useDispatch, useSelector } from "react-redux";
 import { SetActivePlay, SetSongToGlobal } from "../../Redux/Actions/Actions";
+import { SetLocalSong } from "../../util/Functions/SetLocal";
 function DetailPlaylist() {
   const [isLoop, SetIsLoop] = useState(false);
   const [properties, SetProperties] = useState({
@@ -41,7 +42,7 @@ function DetailPlaylist() {
   // console.log(properties);
 
   const SetSong = function (id) {
-    dispatch(SetActivePlay(!GlobalState.isPlaying));
+    dispatch(SetActivePlay(false));
     dispatch(SetSongToGlobal(id));
   };
   return (
@@ -54,6 +55,7 @@ function DetailPlaylist() {
           {GlobalState.isPlaying ? (
             <FontAwesomeIcon
               onClick={() => {
+                
                 SetStatusPlaying();
               }}
               icon={IconSolid.faPauseCircle}
@@ -72,9 +74,11 @@ function DetailPlaylist() {
             return (
               <li
                 onClick={() => {
+                  SetLocalSong(item.encodeId)
                   SetSong(item.encodeId);
                 }}
                 key={item.encodeId}
+                idsong={item.encodeId}
                 className={`${style.ListSongItem}`}
               >
                 {item.title}
