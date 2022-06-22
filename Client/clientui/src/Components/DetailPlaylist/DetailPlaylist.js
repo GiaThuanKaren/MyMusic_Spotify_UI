@@ -6,6 +6,7 @@ import { IconSolid } from "../../util/FontAwesome/FontAwesome";
 import { useDispatch, useSelector } from "react-redux";
 import { SetActivePlay, SetSongToGlobal } from "../../Redux/Actions/Actions";
 import { SetLocalSong } from "../../util/Functions/SetLocal";
+import { ConvertTimePlaying } from "../../util/Functions/ConverTimeSong";
 function DetailPlaylist() {
   const [isLoop, SetIsLoop] = useState(false);
   const [properties, SetProperties] = useState({
@@ -55,7 +56,6 @@ function DetailPlaylist() {
           {GlobalState.isPlaying ? (
             <FontAwesomeIcon
               onClick={() => {
-                
                 SetStatusPlaying();
               }}
               icon={IconSolid.faPauseCircle}
@@ -71,17 +71,27 @@ function DetailPlaylist() {
         </div>
         <ul className={`${style.ListSong}`}>
           {properties.songs.map(function (item, idx) {
+            console.log(item.thumbnailM)
             return (
               <li
                 onClick={() => {
-                  SetLocalSong(item.encodeId)
+                  SetLocalSong(item.encodeId);
                   SetSong(item.encodeId);
                 }}
                 key={item.encodeId}
                 idsong={item.encodeId}
                 className={`${style.ListSongItem}`}
               >
-                {item.title}
+                <div className={`${style.Left_ListSongItem}`}>
+                  <p>{idx+1}</p>
+                  <div style={{backgroundImage:`url(${item.thumbnailM})`}} className={`${style.Left_ListSongItem_Img}`}>
+                    {/* <img src={item.thumbnailM} style={{width:"100%", height:"auto",objectFit:"cover"}} src=""/> */}
+                  </div>
+                  <p>{item.title}</p>
+                </div>
+                <div className={`${style.Right_ListSongItem}`}>
+                    <p>{ConvertTimePlaying(item.duration)}</p>
+                </div>
               </li>
             );
           })}

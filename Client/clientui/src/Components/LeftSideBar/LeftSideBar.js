@@ -16,7 +16,7 @@ function LeftSideBar() {
     console.log(e);
   };
   const SetActive=function(ele){
-    console.log(document.querySelectorAll(".LeftSideBar_LinkTag__Ema9C"))
+    // console.log(document.querySelectorAll(".LeftSideBar_LinkTag__Ema9C"))
     // console.log(ele.target.innerHTML,ele.target.parentElement);
 
   }

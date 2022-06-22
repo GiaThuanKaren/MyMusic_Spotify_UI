@@ -4,6 +4,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { SetActivePlay, SetEleToGlobal } from "../../Redux/Actions/Actions";
 import { IconSolid } from "../../util/FontAwesome/FontAwesome";
+import { ConvertTimePlaying } from "../../util/Functions/ConverTimeSong";
 import SetStatusEleAudio from "../../util/Functions/SetStatusEleAudio";
 import style from "./Player.module.css";
 
@@ -23,14 +24,15 @@ function Player() {
     // SetStatusEleAudio(EleAudio.current,GlobalState.isPlaying)
     dispacth(SetActivePlay(!GlobalState.isPlaying));
   };
-  const ConvertTimePlaying = function (time) {
-    let min = Math.floor(time / 60);
-    let sec = Math.floor(time % 60);
-    if (min < 10) min = `0${min}`;
-    if (sec < 10) sec = `0${sec}`;
-    // console.log(min, sec);
-    return `${min}:${sec}`;
-  };
+  
+  // const ConvertTimePlaying = function (time) {
+  //   let min = Math.floor(time / 60);
+  //   let sec = Math.floor(time % 60);
+  //   if (min < 10) min = `0${min}`;
+  //   if (sec < 10) sec = `0${sec}`;
+  //   // console.log(min, sec);
+  //   return `${min}:${sec}`;
+  // };
   // console.log(EleAudio, EleAudio.current , " 33 ")
   useEffect(() => {
     if (GlobalState.Song != "") {
@@ -62,7 +64,7 @@ function Player() {
             />
             {GlobalState.isPlaying ? (
               <FontAwesomeIcon
-                className={style.BtnControlSong}
+                className={`${style.BtnControlSong} ${ style.BtnPLayAndPause}`}
                 onClick={() => {
                   SetStatusPlaying();
                 }}
@@ -70,7 +72,7 @@ function Player() {
               />
             ) : (
               <FontAwesomeIcon
-                className={style.BtnControlSong}
+                className={`${style.BtnControlSong} ${ style.BtnPLayAndPause}` }
                 onClick={() => {
                   SetStatusPlaying();
                 }}

@@ -1,28 +1,55 @@
-.DetailPlayList{
-    margin-top: 70px;
-    min-height: 0px;
-    width: 100%;
+.DetailPlayList {
+  margin-top: 70px;
+  min-height: 0px;
+  width: 100%;
 }
 
-.DetailPlayListBody{
-    /* height: 100vh; */
+.DetailPlayListBody {
+  /* height: 100vh; */
 }
-.SectionInfoPlaylist{
-    height: 300px;
-    width: 100%;
-    background-color: rebeccapurple;
+.SectionInfoPlaylist {
+  height: 300px;
+  width: 100%;
+  background-color: rebeccapurple;
 }
 
-.PlayBtnDetailPlayList{
-    height: 50px;
-    width: 100%;
-    display: flex;
-    align-items: center;
+.PlayBtnDetailPlayList {
+  height: 50px;
+  width: 100%;
+  display: flex;
+  align-items: center;
 }
-.ListSong{
-    width: 100%;
+.ListSong {
+  width: 100%;
 }
-.ListSongItem{
-    height: 50px;
-    background-color: aqua;
+.ListSongItem {
+  color: #fff;
+  height: 50px;
+  background-color: rgb(0, 0, 0);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.Left_ListSongItem {
+    flex: 1;
+  height: 100%;
+  display: flex;
+  /* justify-content: space-between; */
+  align-items: center;
+}
+
+.Left_ListSongItem_Img {
+  height: 100%;
+  width: 50px;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+.Right_ListSongItem {
+    flex: 1;
+text-align: right;
+    height: 100%;
+  /* display: flex;
+  align-items: center; */
 }
