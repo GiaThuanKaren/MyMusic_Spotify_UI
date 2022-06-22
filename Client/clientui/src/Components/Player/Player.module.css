@@ -34,3 +34,7 @@
 .BtnPLayAndPause{
     font-size: 2rem;
 }
+
+.LoopActive{
+    color: rgb(116, 192, 116);
+}

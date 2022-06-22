@@ -21,14 +21,14 @@ function App() {
         <Routes>
           <Route
             path="/"
-            children={<MainHomeRightSideBar />}
+            // children={<MainHomeRightSideBar />}
             element={<RightSideBar />}
           >
-            <Route path="show" element={<DetailPlaylist />} />
-            <Route path="" element={<MainHomeRightSideBar />} />
+            <Route path="/show" element={<DetailPlaylist />} />
             <Route path="/search" element={<Search />} />
             <Route path="/library" element={<Libraray />} />
             <Route path="/liked" element={<Liked />} />
+            <Route path="/" element={<MainHomeRightSideBar />} />
           </Route>
           <Route path="/createNewPL" element={<CreatePlayList />} />
         </Routes>

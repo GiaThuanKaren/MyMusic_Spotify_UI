@@ -1,11 +1,12 @@
 import { Grid } from "@mui/material";
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useCurrentPath } from "../../CustomHooks/useCurrentPath";
 import { FontAwesomeIcon, IconSolid } from "../../util/FontAwesome/FontAwesome";
 import styles from "./LeftSideBar.module.css";
 FontAwesomeIcon;
 function LeftSideBar() {
+  const navigate= useNavigate();
   // const currentPath = useCurrentPath();
   const [select, SetSelect] = useState("");
   const [properties, SetProperties] = useState({
@@ -122,12 +123,13 @@ function LeftSideBar() {
               ? properties.dataPlayList.map(function (item, id) {
                   return (
                     <>
-                      <li
-                
+                      <Link
+                        key={item.encodeId}
+                        to={`/show?id=${item.encodeId}`}
                         onClick={() => {
+                          // navigate(`/show?id=${item.encodeId}`)
                           SetSelect(item.title);
                         }}
-                        key={item.encodeId}
                         idsong={item.encodeId}
                         className={`${styles.LinkTag} ${
                           select == item.title
@@ -136,7 +138,7 @@ function LeftSideBar() {
                         } ${styles.ItemLeftMenu}`}
                       >
                         {item.title}
-                      </li>
+                      </Link>
                     </>
                   );
                 })

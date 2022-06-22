@@ -37,6 +37,7 @@ export function MainHomeRightSideBar() {
             : properties.PlayList1.map(function (item, idx) {
                 return (
                   <ListSong
+                    key={item.encodeId}
                     tittle={item.title}
                     IsHaveBtnALL
                     ColSpacing={3}

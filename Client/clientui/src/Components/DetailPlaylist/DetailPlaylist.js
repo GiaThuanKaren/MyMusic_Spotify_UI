@@ -7,8 +7,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { SetActivePlay, SetSongToGlobal } from "../../Redux/Actions/Actions";
 import { SetLocalSong } from "../../util/Functions/SetLocal";
 import { ConvertTimePlaying } from "../../util/Functions/ConverTimeSong";
+import { useParams } from "react-router-dom";
 function DetailPlaylist() {
-  const [isLoop, SetIsLoop] = useState(false);
+  const { id} = useParams();
+  console.log(id)
+    const [isLoop, SetIsLoop] = useState(false);
   const [properties, SetProperties] = useState({
     Des: "",
     title: "",
@@ -16,6 +19,7 @@ function DetailPlaylist() {
     artistsNames: "",
   });
   const param = new URLSearchParams(location.search).get("id");
+  console.log(param,"New Id Playlist Incoming")
   const GlobalState = useSelector((state) => state);
   const dispatch = useDispatch();
   const SetStatusPlaying = function () {
@@ -37,14 +41,16 @@ function DetailPlaylist() {
         console.log(data, sortDescription, title, song, artistsNames);
       })
       .catch((e) => {
+        alert("Bài Này Thuộc Tài Khoản VIP , Vui Lòng Chọn Bài Khác ạ")
         console.log("Detail Playlist ", e);
       });
-  }, []);
+  }, [param]);
   // console.log(properties);
 
   const SetSong = function (id) {
     dispatch(SetActivePlay(false));
     dispatch(SetSongToGlobal(id));
+    // dispatch(SetActivePlay(true));
   };
   return (
     <>
@@ -71,12 +77,13 @@ function DetailPlaylist() {
         </div>
         <ul className={`${style.ListSong}`}>
           {properties.songs.map(function (item, idx) {
-            console.log(item.thumbnailM)
+            {/* console.log(item.thumbnailM) */}
             return (
               <li
                 onClick={() => {
                   SetLocalSong(item.encodeId);
                   SetSong(item.encodeId);
+                  
                 }}
                 key={item.encodeId}
                 idsong={item.encodeId}

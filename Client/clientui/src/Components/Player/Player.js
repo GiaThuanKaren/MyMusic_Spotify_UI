@@ -19,12 +19,13 @@ function Player() {
     duration: "",
     PerCent: 0,
   });
+  const [loop, SetLoop] = useState(false);
   // console.log(GlobalState.Song)
   const SetStatusPlaying = function () {
     // SetStatusEleAudio(EleAudio.current,GlobalState.isPlaying)
     dispacth(SetActivePlay(!GlobalState.isPlaying));
   };
-  
+
   // const ConvertTimePlaying = function (time) {
   //   let min = Math.floor(time / 60);
   //   let sec = Math.floor(time % 60);
@@ -36,7 +37,7 @@ function Player() {
   // console.log(EleAudio, EleAudio.current , " 33 ")
   useEffect(() => {
     if (GlobalState.Song != "") {
-      console.log("New ID ",GlobalState.Song)
+      console.log("New ID ", GlobalState.Song);
       fetch(`http://localhost:5000/song/${GlobalState.Song}`)
         .then((res) => res.json())
         .then((item) => {
@@ -64,7 +65,7 @@ function Player() {
             />
             {GlobalState.isPlaying ? (
               <FontAwesomeIcon
-                className={`${style.BtnControlSong} ${ style.BtnPLayAndPause}`}
+                className={`${style.BtnControlSong} ${style.BtnPLayAndPause}`}
                 onClick={() => {
                   SetStatusPlaying();
                 }}
@@ -72,7 +73,7 @@ function Player() {
               />
             ) : (
               <FontAwesomeIcon
-                className={`${style.BtnControlSong} ${ style.BtnPLayAndPause}` }
+                className={`${style.BtnControlSong} ${style.BtnPLayAndPause}`}
                 onClick={() => {
                   SetStatusPlaying();
                 }}
@@ -84,7 +85,12 @@ function Player() {
               icon={IconSolid.faForwardFast}
             />
             <FontAwesomeIcon
-              className={style.BtnControlSong}
+              onClick={() => {
+                SetLoop(!loop);
+              }}
+              className={`${style.BtnControlSong} ${
+                loop ? style.LoopActive : ""
+              }`}
               icon={IconSolid.faRepeat}
             />
           </div>
@@ -104,6 +110,15 @@ function Player() {
               onPause={() => {
                 // console.log("Is Playing False");
               }}
+              onEnded={() => {
+                console.log("End");
+                if (loop) {
+                  // EleAudio.current.play();
+                  dispacth(SetActivePlay(true));
+                  console.log(GlobalState.isPlaying);
+                  EleAudio.current.loop;
+                }
+              }}
               onTimeUpdate={(e) => {
                 let timecur = ConvertTimePlaying(e.target.currentTime);
                 // console.log(e.target.currentTime)
@@ -118,11 +133,13 @@ function Player() {
                 });
               }}
               ref={EleAudio}
-              
               src={song}
             ></audio>
             <p>{timeSong.timeCurrent ? timeSong.timeCurrent : "00 : 00"}</p>
             <input
+            onChange={()=>{
+              
+            }}
               className={`${style.RangeTimeSong}`}
               type="range"
               value={timeSong.PerCent ? timeSong.PerCent : 0}

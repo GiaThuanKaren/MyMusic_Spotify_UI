@@ -2,6 +2,7 @@
   margin-top: 70px;
   min-height: 0px;
   width: 100%;
+  margin-bottom: 70px;
 }
 
 .DetailPlayListBody {
@@ -40,8 +41,9 @@
 }
 
 .Left_ListSongItem_Img {
+    padding: 5px;
   height: 100%;
-  width: 50px;
+  width: 40px;
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
