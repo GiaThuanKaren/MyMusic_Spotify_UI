@@ -2,7 +2,11 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Grid, Icon } from "@mui/material";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { SetActivePlay, SetEleToGlobal } from "../../Redux/Actions/Actions";
+import {
+  SetActivePlay,
+  SetEleToGlobal,
+  SetSongToGlobal,
+} from "../../Redux/Actions/Actions";
 import { IconSolid } from "../../util/FontAwesome/FontAwesome";
 import { ConvertTimePlaying } from "../../util/Functions/ConverTimeSong";
 import SetStatusEleAudio from "../../util/Functions/SetStatusEleAudio";
@@ -19,6 +23,7 @@ function Player() {
     duration: "",
     PerCent: 0,
   });
+  const [indexCurSong, SetindexCurSong] = useState(0);
   const [loop, SetLoop] = useState(false);
   // console.log(GlobalState.Song)
   const SetStatusPlaying = function () {
@@ -51,7 +56,9 @@ function Player() {
   // console.log(GlobalState.isPlaying, "Player",typeof EleAudio.current);
   return (
     <Grid className={`${style.MainPlayerBottom}`} container>
-      <Grid item lg={3} md={2}></Grid>
+      <Grid item lg={3} md={2}>
+        
+      </Grid>
       <Grid item lg={6} md={8}>
         <div className={`${style.ControlSong}`}>
           <div className={`${style.ControlSongBtn}`}>
@@ -117,6 +124,16 @@ function Player() {
                   dispacth(SetActivePlay(true));
                   console.log(GlobalState.isPlaying);
                   EleAudio.current.loop;
+                } else {
+                  if (GlobalState.SongQueue.length > 0) {
+                    if (indexCurSong < GlobalState.SongQueue.length) {
+                      console.log("Next Song 123");
+                      let idNextSong = GlobalState.SongQueue[indexCurSong + 1];
+                      console.log(idNextSong.encodeId);
+                      dispacth(SetSongToGlobal(idNextSong.encodeId))
+                      SetindexCurSong((prev) => prev + 1);
+                    }
+                  }
                 }
               }}
               onTimeUpdate={(e) => {
@@ -137,9 +154,7 @@ function Player() {
             ></audio>
             <p>{timeSong.timeCurrent ? timeSong.timeCurrent : "00 : 00"}</p>
             <input
-            onChange={()=>{
-              
-            }}
+              onChange={() => {}}
               className={`${style.RangeTimeSong}`}
               type="range"
               value={timeSong.PerCent ? timeSong.PerCent : 0}

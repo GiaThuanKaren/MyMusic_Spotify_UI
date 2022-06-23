@@ -20,3 +20,10 @@ export const SetSongToGlobal=function(payload){
     payload:payload
   }
 }
+
+export const SetSongQueue=function(payload){
+  return{
+    type:"SetSongQueue",
+    payload:payload
+  }
+}

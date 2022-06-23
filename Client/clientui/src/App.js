@@ -31,6 +31,7 @@ function App() {
             <Route path="/" element={<MainHomeRightSideBar />} />
           </Route>
           <Route path="/createNewPL" element={<CreatePlayList />} />
+          
         </Routes>
         <Player />
       </Grid>

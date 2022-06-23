@@ -4,6 +4,8 @@ const InitialState={
     isPlaying:false,
     EleAudio:null,
     Song:localStorage.getItem("song") ? JSON.parse(localStorage.getItem("song")) : "ZW8I78UO",
+    SongQueue:[],
+    TittleSong:""
 }
 
 const rootReducer=function(state=InitialState,action){
@@ -29,6 +31,13 @@ const rootReducer=function(state=InitialState,action){
             return {
                 ...state,
                 Song:action.payload
+            }
+        }
+        case "SetSongQueue":{
+            
+            return {
+                ...state,
+                SongQueue:action.payload
             }
         }
         default:{
