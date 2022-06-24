@@ -1,4 +1,4 @@
-import SetStatusEleAudio from "../../util/Functions/SetStatusEleAudio";
+import SetStatusEleAudio, { SelectItemToPlay } from "../../util/Functions/SetStatusEleAudio";
 
 const InitialState={
     isPlaying:false,
@@ -12,7 +12,8 @@ const rootReducer=function(state=InitialState,action){
     switch(action.type){
         case "SETACTIVEPLAY":{
             console.log(state,action.payload)    
-            SetStatusEleAudio(state.EleAudio,action.payload)
+            SelectItemToPlay(state.EleAudio,action.payload)
+            // SetStatusEleAudio(state.EleAudio,action.payload)
             return {
                 ...state,
                 isPlaying:action.payload
@@ -31,6 +32,12 @@ const rootReducer=function(state=InitialState,action){
             return {
                 ...state,
                 Song:action.payload
+            }
+        }
+        case "SetTittleSong":{
+            return {
+                ...state,
+                TittleSong:action.payload
             }
         }
         case "SetSongQueue":{

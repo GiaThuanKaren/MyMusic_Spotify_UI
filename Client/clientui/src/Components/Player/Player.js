@@ -9,7 +9,7 @@ import {
 } from "../../Redux/Actions/Actions";
 import { IconSolid } from "../../util/FontAwesome/FontAwesome";
 import { ConvertTimePlaying } from "../../util/Functions/ConverTimeSong";
-import SetStatusEleAudio from "../../util/Functions/SetStatusEleAudio";
+import SetStatusEleAudio, { SelectItemToPlay } from "../../util/Functions/SetStatusEleAudio";
 import style from "./Player.module.css";
 
 function Player() {
@@ -27,19 +27,10 @@ function Player() {
   const [loop, SetLoop] = useState(false);
   // console.log(GlobalState.Song)
   const SetStatusPlaying = function () {
+    SelectItemToPlay(EleAudio.current,GlobalState.isPlaying)
     // SetStatusEleAudio(EleAudio.current,GlobalState.isPlaying)
     dispacth(SetActivePlay(!GlobalState.isPlaying));
   };
-
-  // const ConvertTimePlaying = function (time) {
-  //   let min = Math.floor(time / 60);
-  //   let sec = Math.floor(time % 60);
-  //   if (min < 10) min = `0${min}`;
-  //   if (sec < 10) sec = `0${sec}`;
-  //   // console.log(min, sec);
-  //   return `${min}:${sec}`;
-  // };
-  // console.log(EleAudio, EleAudio.current , " 33 ")
   useEffect(() => {
     if (GlobalState.Song != "") {
       console.log("New ID ", GlobalState.Song);
@@ -56,9 +47,7 @@ function Player() {
   // console.log(GlobalState.isPlaying, "Player",typeof EleAudio.current);
   return (
     <Grid className={`${style.MainPlayerBottom}`} container>
-      <Grid item lg={3} md={2}>
-        
-      </Grid>
+      <Grid item lg={3} md={2}></Grid>
       <Grid item lg={6} md={8}>
         <div className={`${style.ControlSong}`}>
           <div className={`${style.ControlSongBtn}`}>
@@ -112,10 +101,10 @@ function Player() {
                 });
               }}
               onPlaying={() => {
-                // console.log("Is Playing True");
+                console.log("Is Playing True");
               }}
               onPause={() => {
-                // console.log("Is Playing False");
+                console.log("Is Playing False");
               }}
               onEnded={() => {
                 console.log("End");
@@ -130,7 +119,7 @@ function Player() {
                       console.log("Next Song 123");
                       let idNextSong = GlobalState.SongQueue[indexCurSong + 1];
                       console.log(idNextSong.encodeId);
-                      dispacth(SetSongToGlobal(idNextSong.encodeId))
+                      dispacth(SetSongToGlobal(idNextSong.encodeId));
                       SetindexCurSong((prev) => prev + 1);
                     }
                   }
