@@ -90,6 +90,7 @@ function DetailPlaylist() {
               icon={IconSolid.faPlayCircle}
             />
           )}
+          <FontAwesomeIcon icon={IconSolid.faHeart} />
         </div>
         <ul className={`${style.ListSong}`}>
           {properties.songs.map(function (item, idx) {
@@ -107,14 +108,20 @@ function DetailPlaylist() {
                 className={`${style.ListSongItem}`}
               >
                 <div className={`${style.Left_ListSongItem}`}>
-                  <p>{idx + 1}</p>
+                  <p className={`${style.IndexSong}`}>
+                    {GlobalState.isPlaying && item.encodeId == GlobalState.Song ? (
+                      <img src="https://open.spotifycdn.com/cdn/images/equaliser-animated-green.f93a2ef4.gif" />
+                    ) : (
+                      idx + 1
+                    )}
+                  </p>
                   <div
                     style={{ backgroundImage: `url(${item.thumbnailM})` }}
                     className={`${style.Left_ListSongItem_Img}`}
                   >
                     {/* <img src={item.thumbnailM} style={{width:"100%", height:"auto",objectFit:"cover"}} src=""/> */}
                   </div>
-                  <p>{item.title}</p>
+                  <p className={`${style.TitleSong}`}>{item.title}</p>
                 </div>
                 <div className={`${style.Right_ListSongItem}`}>
                   <p>{ConvertTimePlaying(item.duration)}</p>
