@@ -5,7 +5,7 @@
   color: aliceblue;
   /* font-size: 2rem; */
   /* display: flex; */
-  padding: 2px 5px;
+  padding: 2px 8px;
   justify-content: space-between;
   right: 0;
   left: 0;
@@ -37,4 +37,23 @@
 
 .LoopActive{
     color: rgb(116, 192, 116);
+}
+.LeftSideConTainer{
+display: flex;
+align-items: center;
+    height: 100%;
+    width: 100%;
+}
+.LeftSideSongImg{
+    height: 50px;
+    width: 50px;
+    background-position: center;
+    background-size: cover;
+    
+}
+.TitleSong{
+    white-space: nowrap;
+    /* width: 40px; */
+    overflow: hidden;
+    text-overflow: ellipsis;
 }

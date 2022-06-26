@@ -9,7 +9,9 @@ import {
 } from "../../Redux/Actions/Actions";
 import { IconSolid } from "../../util/FontAwesome/FontAwesome";
 import { ConvertTimePlaying } from "../../util/Functions/ConverTimeSong";
-import SetStatusEleAudio, { SelectItemToPlay } from "../../util/Functions/SetStatusEleAudio";
+import SetStatusEleAudio, {
+  SelectItemToPlay,
+} from "../../util/Functions/SetStatusEleAudio";
 import style from "./Player.module.css";
 
 function Player() {
@@ -27,7 +29,7 @@ function Player() {
   const [loop, SetLoop] = useState(false);
   // console.log(GlobalState.Song)
   const SetStatusPlaying = function () {
-    SelectItemToPlay(EleAudio.current,GlobalState.isPlaying)
+    SelectItemToPlay(EleAudio.current, GlobalState.isPlaying);
     // SetStatusEleAudio(EleAudio.current,GlobalState.isPlaying)
     dispacth(SetActivePlay(!GlobalState.isPlaying));
   };
@@ -47,7 +49,15 @@ function Player() {
   // console.log(GlobalState.isPlaying, "Player",typeof EleAudio.current);
   return (
     <Grid className={`${style.MainPlayerBottom}`} container>
-      <Grid item lg={3} md={2}></Grid>
+      <Grid item lg={3} md={2}>
+        <div className={`${style.LeftSideConTainer}`}>
+          <div
+            className={`${style.LeftSideSongImg}`}
+            style={{ backgroundImage: `url(${GlobalState.ImageSongPlaying})` }}
+          ></div>
+          <p className={`${style.TitleSong}`}>{GlobalState.TittleSong}</p>
+        </div>
+      </Grid>
       <Grid item lg={6} md={8}>
         <div className={`${style.ControlSong}`}>
           <div className={`${style.ControlSongBtn}`}>

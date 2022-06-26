@@ -1,3 +1,7 @@
-export const  SetLocalSong=function(item) {
-    localStorage.setItem("song",JSON.stringify(item))
+export const  SetLocalSong=function(id,title,img) {
+    localStorage.setItem("song",JSON.stringify({
+        id,
+        title,
+        img
+    }))
 }

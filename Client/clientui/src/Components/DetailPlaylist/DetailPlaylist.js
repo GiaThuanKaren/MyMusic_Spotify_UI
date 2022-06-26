@@ -56,9 +56,14 @@ function DetailPlaylist() {
   }, [param]);
   // console.log(properties);
 
-  const SetSong = function (id) {
+  const SetSong = function (id,nameSong,img) {
     dispatch(SetActivePlay(true));
-    dispatch(SetSongToGlobal(id));
+    dispatch(SetSongToGlobal({
+      id:id,
+      name:nameSong,
+      img:img
+      
+    }));
     SetStatusEleAudio(GlobalState.EleAudio, true);
 
     const idFiltered = properties.songs.filter(function (item, idx) {
@@ -100,8 +105,8 @@ function DetailPlaylist() {
             return (
               <li
                 onClick={() => {
-                  SetLocalSong(item.encodeId);
-                  SetSong(item.encodeId);
+                  SetLocalSong(item.encodeId,item.title,item.thumbnailM);
+                  SetSong(item.encodeId,item.title,item.thumbnailM);
                 }}
                 key={item.encodeId}
                 idsong={item.encodeId}
