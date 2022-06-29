@@ -4,9 +4,9 @@ import { Link, useNavigate } from "react-router-dom";
 import { useCurrentPath } from "../../CustomHooks/useCurrentPath";
 import { FontAwesomeIcon, IconSolid } from "../../util/FontAwesome/FontAwesome";
 import styles from "./LeftSideBar.module.css";
-FontAwesomeIcon;
+
 function LeftSideBar() {
-  const navigate= useNavigate();
+  const navigate = useNavigate();
   // const currentPath = useCurrentPath();
   const [select, SetSelect] = useState("");
   const [properties, SetProperties] = useState({
@@ -14,13 +14,12 @@ function LeftSideBar() {
     isFetching: true,
   });
   const GetAttr = function (ele) {
-    console.log(e);
+    console.log(ele);
   };
-  const SetActive=function(ele){
+  const SetActive = function (ele) {
     // console.log(document.querySelectorAll(".LeftSideBar_LinkTag__Ema9C"))
     // console.log(ele.target.innerHTML,ele.target.parentElement);
-
-  }
+  };
   useEffect(() => {
     fetch(`http://localhost:5000/top100`)
       .then((res) => res.json())
@@ -57,14 +56,13 @@ function LeftSideBar() {
             </Link>
           </div>
           <ul className={`${styles.ListItem}`}>
-            
             <Link
               onClick={(e) => {
-                SetActive(e)
+                SetActive(e);
               }}
               className={`${styles.LinkTag}   ${select == styles.TextHover}  ${
                 styles.ItemLeftMenu
-              } ` }
+              } `}
               to="/"
             >
               <FontAwesomeIcon
@@ -120,28 +118,26 @@ function LeftSideBar() {
 
           <ul className={`${styles.ListItem} ${styles.ListPlayList}`}>
             {properties.isFetching == false
-              ? properties.dataPlayList.map(function (item, id) {
-                  return (
-                    <>
-                      <Link
-                        key={item.encodeId}
-                        to={`/show?id=${item.encodeId}`}
-                        onClick={() => {
-                          // navigate(`/show?id=${item.encodeId}`)
-                          SetSelect(item.title);
-                        }}
-                        idsong={item.encodeId}
-                        className={`${styles.LinkTag} ${
-                          select == item.title
-                            ? styles.TextActiveHover
-                            : styles.TextHover
-                        } ${styles.ItemLeftMenu}`}
-                      >
-                        {item.title}
-                      </Link>
-                    </>
-                  );
-                })
+              ? properties.dataPlayList.map((item, id) => (
+                  <>
+                    <Link
+                      key={item.encodeId}
+                      to={`/show?id=${item.encodeId}`}
+                      onClick={() => {
+                        // navigate(`/show?id=${item.encodeId}`)
+                        SetSelect(item.title);
+                      }}
+                      idsong={item.encodeId}
+                      className={`${styles.LinkTag} ${
+                        select == item.title
+                          ? styles.TextActiveHover
+                          : styles.TextHover
+                      } ${styles.ItemLeftMenu}`}
+                    >
+                      {item.title}
+                    </Link>
+                  </>
+                ))
               : null}
           </ul>
         </div>

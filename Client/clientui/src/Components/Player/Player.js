@@ -34,7 +34,7 @@ function Player() {
     dispacth(SetActivePlay(!GlobalState.isPlaying));
   };
   useEffect(() => {
-    alert("change")
+    // alert("change")
 
     if (GlobalState.Song != "") {
       console.log("New ID ", GlobalState.Song);
@@ -121,7 +121,6 @@ function Player() {
               onEnded={() => {
                 console.log("End");
                 if (loop) {
-                  // EleAudio.current.play();
                   dispacth(SetActivePlay(true));
                   console.log(GlobalState.isPlaying);
                   EleAudio.current.loop;

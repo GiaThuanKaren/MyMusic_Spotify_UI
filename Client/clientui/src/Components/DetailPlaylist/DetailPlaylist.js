@@ -24,7 +24,7 @@ function DetailPlaylist() {
     songs: [],
     artistsNames: "",
   });
-  const param = new URLSearchParams(location.search).get("id");
+  const param = new URLSearchParams(window.location.search).get("id");
   // console.log(param,"New Id Playlist Incoming")
   const GlobalState = useSelector((state) => state);
   console.log(GlobalState.SongQueue);
