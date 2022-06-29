@@ -11,9 +11,11 @@ import CreatePlayList from "./Components/CreatePlayList/CreatePlayList";
 import Liked from "./Components/Liked/Liked";
 import Player from "./Components/Player/Player";
 import DetailPlaylist from "./Components/DetailPlaylist/DetailPlaylist";
+
 import RightSideBar, {
   MainHomeRightSideBar,
 } from "./Components/RightSideBar/RightSideBar";
+import { PublicRoute } from "./Routes/PublicRoute";
 function App() {
   return (
     <>
@@ -21,18 +23,18 @@ function App() {
         <LeftSideBar />
         <Routes>
           <Route
-            path="/"
+            path={PublicRoute.Home}
             // children={<MainHomeRightSideBar />}
             element={<RightSideBar />}
           >
-            <Route path="/show" element={<DetailPlaylist />} />
-            <Route path="/search" element={<Search />} />
-            <Route path="/library" element={<Libraray />} />
-            <Route path="/liked" element={<Liked />} />
+            <Route path={PublicRoute.Show} element={<DetailPlaylist />} />
+            <Route path={PublicRoute.Search} element={<Search />} />
+            <Route path={PublicRoute.Library} element={<Libraray />} />
+            <Route path={PublicRoute.Liked} element={<Liked />} />
+            <Route path={PublicRoute.SeeAll} element={<h1>All Page</h1>} />
             <Route path="/" element={<MainHomeRightSideBar />} />
           </Route>
-          <Route path="/createNewPL" element={<CreatePlayList />} />
-          
+          <Route path={PublicRoute.CreateNewPL} element={<CreatePlayList />} />
         </Routes>
         <Player />
       </Grid>

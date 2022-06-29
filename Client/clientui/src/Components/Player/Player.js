@@ -34,6 +34,8 @@ function Player() {
     dispacth(SetActivePlay(!GlobalState.isPlaying));
   };
   useEffect(() => {
+    alert("change")
+
     if (GlobalState.Song != "") {
       console.log("New ID ", GlobalState.Song);
       fetch(`http://localhost:5000/song/${GlobalState.Song}`)
@@ -131,6 +133,7 @@ function Player() {
                       console.log(idNextSong.encodeId);
                       dispacth(SetSongToGlobal(idNextSong.encodeId));
                       SetindexCurSong((prev) => prev + 1);
+                      dispacth(SetActivePlay(true));
                     }
                   }
                 }

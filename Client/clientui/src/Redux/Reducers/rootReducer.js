@@ -2,20 +2,19 @@ import SetStatusEleAudio, {
   SelectItemToPlay,
 } from "../../util/Functions/SetStatusEleAudio";
 
-
 const InitialState = {
   isPlaying: false,
   EleAudio: null,
   Song: localStorage.getItem("song")
     ? JSON.parse(localStorage.getItem("song")).id
     : "ZW8I78UO",
-  SongQueue: [],
-  TittleSong:  localStorage.getItem("song")
-  ? JSON.parse(localStorage.getItem("song")).title
-  : "",
-  ImageSongPlaying:  localStorage.getItem("song")
-  ? JSON.parse(localStorage.getItem("song")).img
-  : "",
+  SongQueue: localStorage.getItem("queue") ? localStorage.getItem("queue") : [],
+  TittleSong: localStorage.getItem("song")
+    ? JSON.parse(localStorage.getItem("song")).title
+    : "",
+  ImageSongPlaying: localStorage.getItem("song")
+    ? JSON.parse(localStorage.getItem("song")).img
+    : "",
 };
 
 const rootReducer = function (state = InitialState, action) {

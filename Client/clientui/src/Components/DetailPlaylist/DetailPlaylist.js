@@ -9,7 +9,7 @@ import {
   SetSongQueue,
   SetSongToGlobal,
 } from "../../Redux/Actions/Actions";
-import { SetLocalSong } from "../../util/Functions/SetLocal";
+import { SetLocalSong, SetQueueSong } from "../../util/Functions/SetLocal";
 import { ConvertTimePlaying } from "../../util/Functions/ConverTimeSong";
 import { useParams } from "react-router-dom";
 import SetStatusEleAudio, {
@@ -17,7 +17,6 @@ import SetStatusEleAudio, {
 } from "../../util/Functions/SetStatusEleAudio";
 function DetailPlaylist() {
   const { id } = useParams();
-
   const [isLoop, SetIsLoop] = useState(false);
   const [properties, SetProperties] = useState({
     Des: "",
@@ -56,16 +55,17 @@ function DetailPlaylist() {
   }, [param]);
   // console.log(properties);
 
-  const SetSong = function (id,nameSong,img) {
+  const SetSong = function (id, nameSong, img) {
     dispatch(SetActivePlay(true));
-    dispatch(SetSongToGlobal({
-      id:id,
-      name:nameSong,
-      img:img
-      
-    }));
+    dispatch(
+      SetSongToGlobal({
+        id: id,
+        name: nameSong,
+        img: img,
+      })
+    );
     SetStatusEleAudio(GlobalState.EleAudio, true);
-
+    SetQueueSong(properties.songs ? properties.songs : []);
     const idFiltered = properties.songs.filter(function (item, idx) {
       return item.encodeId != id;
     });
@@ -105,8 +105,8 @@ function DetailPlaylist() {
             return (
               <li
                 onClick={() => {
-                  SetLocalSong(item.encodeId,item.title,item.thumbnailM);
-                  SetSong(item.encodeId,item.title,item.thumbnailM);
+                  SetLocalSong(item.encodeId, item.title, item.thumbnailM);
+                  SetSong(item.encodeId, item.title, item.thumbnailM);
                 }}
                 key={item.encodeId}
                 idsong={item.encodeId}
@@ -114,7 +114,8 @@ function DetailPlaylist() {
               >
                 <div className={`${style.Left_ListSongItem}`}>
                   <p className={`${style.IndexSong}`}>
-                    {GlobalState.isPlaying && item.encodeId == GlobalState.Song ? (
+                    {GlobalState.isPlaying &&
+                    item.encodeId == GlobalState.Song ? (
                       <img src="https://open.spotifycdn.com/cdn/images/equaliser-animated-green.f93a2ef4.gif" />
                     ) : (
                       idx + 1

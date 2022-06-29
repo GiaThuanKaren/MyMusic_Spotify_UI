@@ -5,3 +5,8 @@ export const  SetLocalSong=function(id,title,img) {
         img
     }))
 }
+
+
+export const SetQueueSong=function(SongArr){
+    localStorage.setItem("queue",JSON.stringify(SongArr))
+}
