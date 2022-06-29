@@ -1,0 +1,12 @@
+version: '3.8'
+services:
+  backend:
+    build: ./Server
+    container_name: "backendnctv1"
+    ports:
+      - 5000:5000
+  frontend:
+    build: ./Client/clientui
+    container_name: "frontendnctv1"
+    ports:
+      - 3000:3000
