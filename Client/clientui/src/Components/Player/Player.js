@@ -34,13 +34,6 @@ function Player() {
     dispacth(SetActivePlay(!GlobalState.isPlaying));
   };
   const ChangeToNextSong = function (stepToNextSong) {
-    console.log(typeof GlobalState.indexSong);
-    console.log(
-      stepToNextSong,
-      GlobalState.indexSong,
-      GlobalState.indexSong + stepToNextSong,
-      GlobalState.SongQueue.length
-    );
     let idNextSong;
     if (GlobalState.indexSong + stepToNextSong < GlobalState.SongQueue.length) {
       console.log("Still have song");
@@ -50,14 +43,12 @@ function Player() {
       console.log("No have song");
       idNextSong = GlobalState.SongQueue[0];
     }
-    console.log("Next Song 123");
-    console.log(idNextSong.encodeId);
     dispacth(
       SetSongToGlobal({
         id: idNextSong.encodeId,
         name: idNextSong.title,
         img: idNextSong.thumbnailM,
-        indexSong: GlobalState.indexSong + stepToNextSong,
+        indexSong: GlobalState.indexSong + stepToNextSong >= 0 ? GlobalState.indexSong + stepToNextSong : 0 ,
       })
     );
     // SetindexCurSong((prev) => prev + 1);
