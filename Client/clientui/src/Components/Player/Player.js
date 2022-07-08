@@ -125,7 +125,7 @@ function Player() {
                   dispacth(SetActivePlay(true));
                 } else {
                   console.log("Next Song 123");
-                  let idNextSong = GlobalState.SongQueue[indexCurSong];
+                  let idNextSong = GlobalState.SongQueue[GlobalState.indexSong +1];
                   console.log(idNextSong.encodeId);
                   dispacth(
                     SetSongToGlobal({

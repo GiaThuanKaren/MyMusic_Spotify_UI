@@ -3,7 +3,7 @@ import SetStatusEleAudio, {
 } from "../../util/Functions/SetStatusEleAudio";
 
 const InitialState = {
-  indexSong:null,
+  indexSong:0,
   isPlaying: false,
   EleAudio: null,
   Song: localStorage.getItem("song")
