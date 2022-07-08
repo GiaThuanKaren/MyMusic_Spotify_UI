@@ -27,7 +27,7 @@ function DetailPlaylist() {
   const param = new URLSearchParams(window.location.search).get("id");
   // console.log(param,"New Id Playlist Incoming")
   const GlobalState = useSelector((state) => state);
-  console.log(GlobalState.SongQueue);
+  // console.log(GlobalState.SongQueue);
   const dispatch = useDispatch();
   const SetStatusPlaying = function () {
     SelectItemToPlay(GlobalState.EleAudio, GlobalState.isPlaying);

@@ -33,7 +33,36 @@ function Player() {
     // SetStatusEleAudio(EleAudio.current,GlobalState.isPlaying)
     dispacth(SetActivePlay(!GlobalState.isPlaying));
   };
-
+  const ChangeToNextSong = function (stepToNextSong) {
+    console.log(typeof GlobalState.indexSong);
+    console.log(
+      stepToNextSong,
+      GlobalState.indexSong,
+      GlobalState.indexSong + stepToNextSong,
+      GlobalState.SongQueue.length
+    );
+    let idNextSong;
+    if (GlobalState.indexSong + stepToNextSong < GlobalState.SongQueue.length) {
+      console.log("Still have song");
+      idNextSong =
+        GlobalState.SongQueue[GlobalState.indexSong + stepToNextSong];
+    } else {
+      console.log("No have song");
+      idNextSong = GlobalState.SongQueue[0];
+    }
+    console.log("Next Song 123");
+    console.log(idNextSong.encodeId);
+    dispacth(
+      SetSongToGlobal({
+        id: idNextSong.encodeId,
+        name: idNextSong.title,
+        img: idNextSong.thumbnailM,
+        indexSong: GlobalState.indexSong + stepToNextSong,
+      })
+    );
+    // SetindexCurSong((prev) => prev + 1);
+    dispacth(SetActivePlay(true));
+  };
   useEffect(() => {
     // alert("change")
 
@@ -69,6 +98,9 @@ function Player() {
               icon={IconSolid.faShuffle}
             />
             <FontAwesomeIcon
+              onClick={() => {
+                ChangeToNextSong(-1);
+              }}
               className={style.BtnControlSong}
               icon={IconSolid.faBackwardFast}
             />
@@ -90,6 +122,9 @@ function Player() {
               />
             )}
             <FontAwesomeIcon
+              onClick={() => {
+                ChangeToNextSong(1);
+              }}
               className={style.BtnControlSong}
               icon={IconSolid.faForwardFast}
             />
@@ -124,18 +159,7 @@ function Player() {
                   EleAudio.current.loop;
                   dispacth(SetActivePlay(true));
                 } else {
-                  console.log("Next Song 123");
-                  let idNextSong = GlobalState.SongQueue[GlobalState.indexSong +1];
-                  console.log(idNextSong.encodeId);
-                  dispacth(
-                    SetSongToGlobal({
-                      id: idNextSong.encodeId,
-                      name: idNextSong.title,
-                      img: idNextSong.thumbnailM,
-                    })
-                  );
-                  SetindexCurSong((prev) => prev + 1);
-                  dispacth(SetActivePlay(true));
+                  ChangeToNextSong(1);
                 }
               }}
               onTimeUpdate={(e) => {
