@@ -22,7 +22,8 @@ function Header({ isHaveSearch, isHaveNavBar }) {
         />
       </div>
       {pathname == PublicRoute.Home && <PlayTittleComp />}
-      {pathname == PublicRoute.Search && <SearchComp />}      
+      {pathname == PublicRoute.Search && <SearchComp />} 
+      {pathname=== PublicRoute.Show && <PlayTittleComp />}     
     </div>
   );
 }

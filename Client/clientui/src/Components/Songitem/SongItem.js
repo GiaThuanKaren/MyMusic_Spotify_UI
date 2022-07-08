@@ -4,22 +4,37 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import { IconSolid } from "../../util/FontAwesome/FontAwesome";
 import style from "./SongItem.module.css";
-function SongItem({IdSongItem,tittle,Artists,Thumbnail, isWrap, IsHaveBtn }) {
-  const navigate=useNavigate();
-  const Direct=function(id){
-    console.log(id)
-    navigate(`/show?id=${id}`)
-  }
+function SongItem({
+  IdSongItem,
+  tittle,
+  Artists,
+  Thumbnail,
+  isWrap,
+  IsHaveBtn,
+}) {
+  const navigate = useNavigate();
+  const Direct = function (id) {
+    console.log(id);
+    navigate(`/show?id=${id}`);
+  };
   return (
-    <Grid  item lg={2} md={2} sm={3} xs={4}>
-      <div onClick={()=>{
-        Direct(IdSongItem)
-      }} idsong={IdSongItem} className={`${style.SongItem}`}>
+    <Grid item lg={2} md={2} sm={3} xs={4}>
+      <div
+        onClick={() => {
+          Direct(IdSongItem);
+        }}
+        idsong={IdSongItem}
+        className={`${style.SongItem}`}
+      >
         <div className={`${style.SongItemContainer}`}>
           <div className={`${style.SongItemImg}`}>
             <img
               className={`${style["SongItemImg_img"]}`}
-              src={Thumbnail ? Thumbnail:"https://i.scdn.co/image/ab67656300005f1f3e1bae386c6a6caf964d36d1"}
+              src={
+                Thumbnail
+                  ? Thumbnail
+                  : "https://i.scdn.co/image/ab67656300005f1f3e1bae386c6a6caf964d36d1"
+              }
             />
             {IsHaveBtn ? (
               <>
@@ -30,8 +45,12 @@ function SongItem({IdSongItem,tittle,Artists,Thumbnail, isWrap, IsHaveBtn }) {
             ) : null}
           </div>
           <div className={`${style.SongItemInfo}`}>
-            <h4 className={`${style.SongItem_NameSong}`}>{tittle ? tittle : "Name Song"}</h4>
-            <p className={`${style.SongItem_Artists}`}>{Artists ? Artists : "Name Artits....."}</p>
+            <h4 className={`${style.SongItem_NameSong}`}>
+              {tittle ? tittle : "Name Song"}
+            </h4>
+            <p className={`${style.SongItem_Artists}`}>
+              {Artists ? Artists : "Name Artits....."}
+            </p>
           </div>
         </div>
       </div>

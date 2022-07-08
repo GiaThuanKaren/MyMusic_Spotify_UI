@@ -1,6 +1,6 @@
 export const PublicRoute={
     Home:"/",
-    Show :"/Show",
+    Show :"/show",
     Search:"/Search",
     Liked :"/Liked",
     SeeAll:"/All",

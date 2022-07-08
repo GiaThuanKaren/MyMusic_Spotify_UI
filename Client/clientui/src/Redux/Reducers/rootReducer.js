@@ -3,6 +3,7 @@ import SetStatusEleAudio, {
 } from "../../util/Functions/SetStatusEleAudio";
 
 const InitialState = {
+  indexSong:null,
   isPlaying: false,
   EleAudio: null,
   Song: localStorage.getItem("song")
@@ -43,6 +44,7 @@ const rootReducer = function (state = InitialState, action) {
         Song: action.payload.id,
         TittleSong: action.payload.name,
         ImageSongPlaying: action.payload.img,
+        indexSong:action.payload.indexSong
       };
     }
     case "SetTittleSong": {

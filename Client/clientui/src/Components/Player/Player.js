@@ -33,6 +33,7 @@ function Player() {
     // SetStatusEleAudio(EleAudio.current,GlobalState.isPlaying)
     dispacth(SetActivePlay(!GlobalState.isPlaying));
   };
+
   useEffect(() => {
     // alert("change")
 
@@ -119,22 +120,22 @@ function Player() {
                 console.log("Is Playing False");
               }}
               onEnded={() => {
-                console.log("End");
                 if (loop) {
-                  dispacth(SetActivePlay(true));
-                  console.log(GlobalState.isPlaying);
                   EleAudio.current.loop;
+                  dispacth(SetActivePlay(true));
                 } else {
-                  if (GlobalState.SongQueue.length > 0) {
-                    if (indexCurSong < GlobalState.SongQueue.length) {
-                      console.log("Next Song 123");
-                      let idNextSong = GlobalState.SongQueue[indexCurSong + 1];
-                      console.log(idNextSong.encodeId);
-                      dispacth(SetSongToGlobal(idNextSong.encodeId));
-                      SetindexCurSong((prev) => prev + 1);
-                      dispacth(SetActivePlay(true));
-                    }
-                  }
+                  console.log("Next Song 123");
+                  let idNextSong = GlobalState.SongQueue[indexCurSong];
+                  console.log(idNextSong.encodeId);
+                  dispacth(
+                    SetSongToGlobal({
+                      id: idNextSong.encodeId,
+                      name: idNextSong.title,
+                      img: idNextSong.thumbnailM,
+                    })
+                  );
+                  SetindexCurSong((prev) => prev + 1);
+                  dispacth(SetActivePlay(true));
                 }
               }}
               onTimeUpdate={(e) => {
