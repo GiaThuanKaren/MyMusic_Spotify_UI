@@ -19,7 +19,7 @@ import { PublicRoute } from "./Routes/PublicRoute";
 function App() {
   return (
     <>
-      <Grid container>
+      <Grid style={{fontSize:"0.9rem"}} container>
         <LeftSideBar />
         <Routes>
           <Route

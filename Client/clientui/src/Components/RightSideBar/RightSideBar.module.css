@@ -6,6 +6,8 @@
     scroll-behavior: smooth;
     overflow-x: hidden;
     overflow-y: auto;
+    font-size: 0.9rem;
+
 }
 .HomeContainer{
     /* height: 100%; */

@@ -1,5 +1,5 @@
 import style from "./DetailPlaylist.module.css";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Grid } from "@mui/material";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { IconSolid } from "../../util/FontAwesome/FontAwesome";
@@ -17,6 +17,7 @@ import SetStatusEleAudio, {
 } from "../../util/Functions/SetStatusEleAudio";
 function DetailPlaylist() {
   const { id } = useParams();
+  const EleContainer = useRef(null);
   const [isLoop, SetIsLoop] = useState(false);
   const [properties, SetProperties] = useState({
     Des: "",
@@ -46,6 +47,7 @@ function DetailPlaylist() {
           artistsNames: artistsNames,
           songs: song.items,
         });
+
         console.log(data, sortDescription, title, song, artistsNames);
       })
       .catch((e) => {
@@ -55,14 +57,14 @@ function DetailPlaylist() {
   }, [param]);
   // console.log(properties);
 
-  const SetSong = function (id, nameSong, img,indexSong) {
+  const SetSong = function (id, nameSong, img, indexSong) {
     dispatch(SetActivePlay(true));
     dispatch(
       SetSongToGlobal({
         id: id,
         name: nameSong,
         img: img,
-        indexSong:indexSong
+        indexSong: indexSong,
       })
     );
     SetStatusEleAudio(GlobalState.EleAudio, true);
@@ -76,7 +78,7 @@ function DetailPlaylist() {
   };
   return (
     <>
-      <div className={`${style.DetailPlayList}`}>
+      <div ref={EleContainer} className={`${style.DetailPlayList}`}>
         <div className={`${style.SectionInfoPlaylist}`}>
           <h1>Section Info PlayList</h1>
         </div>
@@ -107,7 +109,7 @@ function DetailPlaylist() {
               <li
                 onClick={() => {
                   SetLocalSong(item.encodeId, item.title, item.thumbnailM);
-                  SetSong(item.encodeId, item.title, item.thumbnailM,idx);
+                  SetSong(item.encodeId, item.title, item.thumbnailM, idx);
                 }}
                 key={item.encodeId}
                 idsong={item.encodeId}

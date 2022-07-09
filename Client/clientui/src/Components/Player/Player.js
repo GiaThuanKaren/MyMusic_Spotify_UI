@@ -27,11 +27,32 @@ function Player() {
   });
   const [indexCurSong, SetindexCurSong] = useState(0);
   const [loop, SetLoop] = useState(false);
+  const [random, SetRandom] = useState(false);
   // console.log(GlobalState.Song)
   const SetStatusPlaying = function () {
     SelectItemToPlay(EleAudio.current, GlobalState.isPlaying);
     // SetStatusEleAudio(EleAudio.current,GlobalState.isPlaying)
     dispacth(SetActivePlay(!GlobalState.isPlaying));
+  };
+  const RandomSong = function () {
+    let IdRandDomSong;
+    do {
+      IdRandDomSong = Math.abs(
+        Math.floor(Math.random() * GlobalState.SongQueue.length)
+      );
+    } while (IdRandDomSong == GlobalState.indexSong);
+
+    let NextSong = GlobalState.SongQueue[IdRandDomSong];
+    console.log(IdRandDomSong, NextSong);
+    dispacth(
+      SetSongToGlobal({
+        id: NextSong.encodeId,
+        name: NextSong.title,
+        img: NextSong.thumbnailM,
+        indexSong: IdRandDomSong >= 0 ? IdRandDomSong : 0,
+      })
+    );
+    dispacth(SetActivePlay(true));
   };
   const ChangeToNextSong = function (stepToNextSong) {
     let idNextSong;
@@ -48,11 +69,14 @@ function Player() {
         id: idNextSong.encodeId,
         name: idNextSong.title,
         img: idNextSong.thumbnailM,
-        indexSong: GlobalState.indexSong + stepToNextSong >= 0 ? GlobalState.indexSong + stepToNextSong : 0 ,
+        indexSong:
+          GlobalState.indexSong + stepToNextSong >= 0
+            ? GlobalState.indexSong + stepToNextSong
+            : 0,
       })
     );
-    // SetindexCurSong((prev) => prev + 1);
     dispacth(SetActivePlay(true));
+    // SetindexCurSong((prev) => prev + 1);
   };
   useEffect(() => {
     // alert("change")
@@ -85,7 +109,12 @@ function Player() {
         <div className={`${style.ControlSong}`}>
           <div className={`${style.ControlSongBtn}`}>
             <FontAwesomeIcon
-              className={style.BtnControlSong}
+              onClick={() => {
+                SetRandom(!random);
+              }}
+              className={`${style.BtnControlSong} ${
+                random ? style.RandomActive : ""
+              }`}
               icon={IconSolid.faShuffle}
             />
             <FontAwesomeIcon
@@ -146,11 +175,15 @@ function Player() {
                 console.log("Is Playing False");
               }}
               onEnded={() => {
-                if (loop) {
-                  EleAudio.current.loop;
-                  dispacth(SetActivePlay(true));
+                if (random) {
+                  RandomSong();
                 } else {
-                  ChangeToNextSong(1);
+                  if (loop) {
+                    EleAudio.current.loop;
+                    dispacth(SetActivePlay(true));
+                  } else {
+                    ChangeToNextSong(1);
+                  }
                 }
               }}
               onTimeUpdate={(e) => {
