@@ -6,9 +6,11 @@
     scroll-behavior: smooth;
     overflow-x: hidden;
     overflow-y: auto;
-    font-size: 0.9rem;
-
+    
 }
+.Main-Container::-webkit-scrollbar-track {
+    background: none
+  }
 .HomeContainer{
     /* height: 100%; */
     background-color :#000;

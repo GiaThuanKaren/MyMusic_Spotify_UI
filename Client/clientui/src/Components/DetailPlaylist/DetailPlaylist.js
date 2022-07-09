@@ -47,7 +47,7 @@ function DetailPlaylist() {
           artistsNames: artistsNames,
           songs: song.items,
         });
-
+      
         console.log(data, sortDescription, title, song, artistsNames);
       })
       .catch((e) => {

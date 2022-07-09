@@ -17,6 +17,7 @@ function LeftSideBar() {
     console.log(ele);
   };
   const SetActive = function (ele) {
+    console.log(ele);
     // console.log(document.querySelectorAll(".LeftSideBar_LinkTag__Ema9C"))
     // console.log(ele.target.innerHTML,ele.target.parentElement);
   };
@@ -56,21 +57,25 @@ function LeftSideBar() {
             </Link>
           </div>
           <ul className={`${styles.ListItem}`}>
-            <Link
+            <li
               onClick={(e) => {
                 SetActive(e);
               }}
-              className={`${styles.LinkTag}   ${select == styles.TextHover}  ${
-                styles.ItemLeftMenu
-              } `}
-              to="/"
             >
-              <FontAwesomeIcon
-                className={`${styles.Icon} `}
-                icon={IconSolid.faHome}
-              />
-              <p className="textNotActive">Trang Chủ</p>
-            </Link>
+              <Link
+                className={`${styles.LinkTag}   ${
+                  select == styles.TextHover
+                }  ${styles.ItemLeftMenu} `}
+                to="/"
+              >
+                <FontAwesomeIcon
+                  className={`${styles.Icon} `}
+                  icon={IconSolid.faHome}
+                />
+                <p className="textNotActive">Trang Chủ</p>
+              </Link>
+            </li>
+
             <Link
               className={`${styles.LinkTag}  ${styles.TextHover}  ${styles.ItemLeftMenu}`}
               to="/Search"
