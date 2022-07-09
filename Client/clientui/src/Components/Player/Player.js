@@ -15,6 +15,7 @@ import SetStatusEleAudio, {
 import style from "./Player.module.css";
 
 function Player() {
+  const [volumPerCent,SetvolumPerCent]=useState(0);
   const GlobalState = useSelector((state) => state);
   const EleAudio = useRef(null);
   // console.log(GlobalState, "State Global");
@@ -216,7 +217,11 @@ function Player() {
           </div>
         </div>
       </Grid>
-      <Grid item lg={3} md={2}></Grid>
+      <Grid item lg={3} md={2}>
+        <FontAwesomeIcon icon={IconSolid.faVolumeMute} />
+        <FontAwesomeIcon icon={IconSolid.faVolumeDown} />
+        <FontAwesomeIcon icon={IconSolid.faVolumeHigh} />
+      </Grid>
     </Grid>
   );
 }

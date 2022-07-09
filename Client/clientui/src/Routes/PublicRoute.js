@@ -2,8 +2,8 @@ export const PublicRoute={
     Home:"/",
     Show :"/show",
     Search:"/Search",
-    Liked :"/Liked",
+    Liked :"/liked",
     SeeAll:"/All",
     Library:"/Library",
-    CreateNewPL:"/CreateNewPL"
+    CreateNewPL:"/createNewPL"
 }

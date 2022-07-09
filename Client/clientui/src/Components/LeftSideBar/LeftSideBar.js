@@ -1,12 +1,15 @@
 import { Grid } from "@mui/material";
 import { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useCurrentPath } from "../../CustomHooks/useCurrentPath";
+import { PublicRoute } from "../../Routes/PublicRoute";
 import { FontAwesomeIcon, IconSolid } from "../../util/FontAwesome/FontAwesome";
 import styles from "./LeftSideBar.module.css";
 
 function LeftSideBar() {
   const navigate = useNavigate();
+  const { pathname } = useLocation();
+  console.log(pathname);
   // const currentPath = useCurrentPath();
   const [select, SetSelect] = useState("");
   const [properties, SetProperties] = useState({
@@ -64,7 +67,7 @@ function LeftSideBar() {
             >
               <Link
                 className={`${styles.LinkTag}   ${
-                  select == styles.TextHover
+                  pathname == PublicRoute.Home ? styles.TextActiveHover : ""
                 }  ${styles.ItemLeftMenu} `}
                 to="/"
               >
@@ -75,32 +78,41 @@ function LeftSideBar() {
                 <p className="textNotActive">Trang Chủ</p>
               </Link>
             </li>
-
-            <Link
-              className={`${styles.LinkTag}  ${styles.TextHover}  ${styles.ItemLeftMenu}`}
-              to="/Search"
-            >
-              <FontAwesomeIcon
-                className={`${styles.Icon}`}
-                icon={IconSolid.faSearch}
-              />
-              <p className="textNotActive">Tìm Kiếm</p>
-            </Link>
-            <Link
-              className={`${styles.LinkTag}  ${styles.TextHover}  ${styles.ItemLeftMenu}`}
-              to="/Library"
-            >
-              <FontAwesomeIcon
-                className={`${styles.Icon}`}
-                icon={IconSolid.faBookBookmark}
-              />
-              <p>Thư Viện</p>
-            </Link>
+            <li>
+              <Link
+                className={`${styles.LinkTag} ${
+                  pathname == PublicRoute.Search ? styles.TextActiveHover : ""
+                } 1     ${styles.TextHover}  ${styles.ItemLeftMenu}`}
+                to="/Search"
+              >
+                <FontAwesomeIcon
+                  className={`${styles.Icon}`}
+                  icon={IconSolid.faSearch}
+                />
+                <p className="textNotActive">Tìm Kiếm</p>
+              </Link>
+            </li>
+            <li>
+              <Link
+                className={`${styles.LinkTag} ${
+                  pathname == PublicRoute.Library ? styles.TextActiveHover : ""
+                } ${styles.TextHover}  ${styles.ItemLeftMenu}`}
+                to="/Library"
+              >
+                <FontAwesomeIcon
+                  className={`${styles.Icon}`}
+                  icon={IconSolid.faBookBookmark}
+                />
+                <p>Thư Viện</p>
+              </Link>
+            </li>
           </ul>
 
           <ul className={`${styles.ListItem}`}>
             <Link
-              className={`${styles.LinkTag} ${styles.TextHover}  ${styles.ItemLeftMenu}`}
+              className={`${styles.LinkTag} ${
+                  pathname == PublicRoute.CreateNewPL ? styles.TextActiveHover : ""
+                } ${styles.TextHover}  ${styles.ItemLeftMenu}`}
               to="/createNewPL"
             >
               <FontAwesomeIcon
@@ -110,7 +122,9 @@ function LeftSideBar() {
               <p>Tạo Playlist</p>
             </Link>
             <Link
-              className={`${styles.LinkTag}  ${styles.TextHover} ${styles.ItemLeftMenu}`}
+              className={`${styles.LinkTag} ${
+                  pathname == PublicRoute.Liked ? styles.TextActiveHover : ""
+                }  ${styles.TextHover} ${styles.ItemLeftMenu}`}
               to="/liked"
             >
               <FontAwesomeIcon
