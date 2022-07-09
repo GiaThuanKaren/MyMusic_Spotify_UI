@@ -57,3 +57,8 @@ align-items: center;
     overflow: hidden;
     text-overflow: ellipsis;
 }
+
+
+.RighSidePlayer{
+    height: 100%;
+}

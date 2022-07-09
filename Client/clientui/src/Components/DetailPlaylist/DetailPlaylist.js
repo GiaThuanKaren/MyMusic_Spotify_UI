@@ -16,6 +16,7 @@ import SetStatusEleAudio, {
   SelectItemToPlay,
 } from "../../util/Functions/SetStatusEleAudio";
 function DetailPlaylist() {
+  const EleTop = useRef(null);
   const { id } = useParams();
   const EleContainer = useRef(null);
   const [isLoop, SetIsLoop] = useState(false);
@@ -27,6 +28,7 @@ function DetailPlaylist() {
   });
   const param = new URLSearchParams(window.location.search).get("id");
   // console.log(param,"New Id Playlist Incoming")
+  console.log(param,"-------")
   const GlobalState = useSelector((state) => state);
   // console.log(GlobalState.SongQueue);
   const dispatch = useDispatch();
@@ -47,7 +49,9 @@ function DetailPlaylist() {
           artistsNames: artistsNames,
           songs: song.items,
         });
-      
+        EleTop.current.scrollIntoView({
+          behavior :"auto"
+        })
         console.log(data, sortDescription, title, song, artistsNames);
       })
       .catch((e) => {
@@ -56,7 +60,8 @@ function DetailPlaylist() {
       });
   }, [param]);
   // console.log(properties);
-
+ 
+  
   const SetSong = function (id, nameSong, img, indexSong) {
     dispatch(SetActivePlay(true));
     dispatch(
@@ -78,6 +83,9 @@ function DetailPlaylist() {
   };
   return (
     <>
+      <div ref={EleTop}>
+        
+      </div>
       <div ref={EleContainer} className={`${style.DetailPlayList}`}>
         <div className={`${style.SectionInfoPlaylist}`}>
           <h1>Section Info PlayList</h1>

@@ -1,5 +1,5 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Grid, Icon } from "@mui/material";
+import { Grid, Icon, Slider } from "@mui/material";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -15,7 +15,7 @@ import SetStatusEleAudio, {
 import style from "./Player.module.css";
 
 function Player() {
-  const [volumPerCent,SetvolumPerCent]=useState(0);
+  const [volumPerCent, SetvolumPerCent] = useState(0);
   const GlobalState = useSelector((state) => state);
   const EleAudio = useRef(null);
   // console.log(GlobalState, "State Global");
@@ -205,7 +205,13 @@ function Player() {
             ></audio>
             <p>{timeSong.timeCurrent ? timeSong.timeCurrent : "00 : 00"}</p>
             <input
-              onChange={() => {}}
+              onChange={(e) => {
+                SettimeSong({
+                  ...timeSong,
+                  PerCent:e.target.value
+                })
+                console.log(e.target.value)
+              }}
               className={`${style.RangeTimeSong}`}
               type="range"
               value={timeSong.PerCent ? timeSong.PerCent : 0}
@@ -218,9 +224,33 @@ function Player() {
         </div>
       </Grid>
       <Grid item lg={3} md={2}>
-        <FontAwesomeIcon icon={IconSolid.faVolumeMute} />
-        <FontAwesomeIcon icon={IconSolid.faVolumeDown} />
-        <FontAwesomeIcon icon={IconSolid.faVolumeHigh} />
+        <Grid
+          className={`${style.RighSidePlayer}`}
+          container
+          justifyContent={"space-between"}
+          alignItems={"center"}
+        >
+          <Grid item>
+            {volumPerCent == 0 && (
+              <FontAwesomeIcon icon={IconSolid.faVolumeMute} />
+            )}
+            {volumPerCent >= 1 && volumPerCent <= 25 && (
+              <FontAwesomeIcon icon={IconSolid.faVolumeDown} />
+            )}
+            {volumPerCent >= 26 && (
+              <FontAwesomeIcon icon={IconSolid.faVolumeHigh} />
+            )}
+          </Grid>
+          <Grid item>
+            <input
+            onChange={(e)=>{
+              // console.log()
+              EleAudio.current.volume=e.target.value/100
+            }} 
+            defaultValue={0.3}
+             type={"range"} min={0} max={100} step={1} />
+          </Grid>
+        </Grid>
       </Grid>
     </Grid>
   );
