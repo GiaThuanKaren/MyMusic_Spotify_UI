@@ -234,10 +234,10 @@ function Player() {
             {volumPerCent == 0 && (
               <FontAwesomeIcon icon={IconSolid.faVolumeMute} />
             )}
-            {volumPerCent >= 1 && volumPerCent <= 25 && (
+            {volumPerCent >= 0.1 && volumPerCent <= 0.25 && (
               <FontAwesomeIcon icon={IconSolid.faVolumeDown} />
             )}
-            {volumPerCent >= 26 && (
+            {volumPerCent >= 0.26 && (
               <FontAwesomeIcon icon={IconSolid.faVolumeHigh} />
             )}
           </Grid>

@@ -148,7 +148,7 @@ function LeftSideBar() {
                       }}
                       idsong={item.encodeId}
                       className={`${styles.LinkTag} ${
-                        select == item.title
+                        select == item.title && pathname =='/show'
                           ? styles.TextActiveHover
                           : styles.TextHover
                       } ${styles.ItemLeftMenu}`}
