@@ -206,6 +206,9 @@ function Player() {
             <p>{timeSong.timeCurrent ? timeSong.timeCurrent : "00 : 00"}</p>
             <input
               onChange={(e) => {
+                const TimeSeek = (e.target.value * EleAudio.current.duration)/100
+                console.log(TimeSeek)
+                EleAudio.current.currentTime=TimeSeek
                 SettimeSong({
                   ...timeSong,
                   PerCent:e.target.value
