@@ -90,7 +90,15 @@ function Player() {
           // const {} = item.data;
           console.log(item.data["128"]);
           setSong(item.data["128"]);
-        });
+        })
+        .catch(e=>{
+          if(e){
+            
+            // console.log()
+            
+            ChangeToNextSong(1);
+          }
+        })
     }
   }, [GlobalState.Song]);
   // console.log(" Player runiing",EleAudio)
@@ -207,13 +215,13 @@ function Player() {
             <input
               onChange={(e) => {
                 const TimeSeek = (e.target.value * EleAudio.current.duration)/100
-                console.log(TimeSeek)
+                // console.log(TimeSeek)
                 EleAudio.current.currentTime=TimeSeek
                 SettimeSong({
                   ...timeSong,
                   PerCent:e.target.value
                 })
-                console.log(e.target.value)
+                // console.log(e.target.value)
               }}
               className={`${style.RangeTimeSong}`}
               type="range"
@@ -237,17 +245,18 @@ function Player() {
             {volumPerCent == 0 && (
               <FontAwesomeIcon icon={IconSolid.faVolumeMute} />
             )}
-            {volumPerCent >= 0.1 && volumPerCent <= 0.25 && (
+            {volumPerCent >= 0.1 && volumPerCent <= 0.5 && (
               <FontAwesomeIcon icon={IconSolid.faVolumeDown} />
             )}
-            {volumPerCent >= 0.26 && (
+            {volumPerCent >= 0.51 && (
               <FontAwesomeIcon icon={IconSolid.faVolumeHigh} />
             )}
           </Grid>
           <Grid item>
             <input
             onChange={(e)=>{
-              // console.log()
+              
+              SetvolumPerCent((e.target.value/100).toFixed(1))
               EleAudio.current.volume=e.target.value/100
             }} 
             defaultValue={0.3}
