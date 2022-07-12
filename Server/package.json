@@ -6,12 +6,13 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "startServer": "nodemon index.js",
-    "startAuthServer":"nodemon AuthServer.js"
+    "startAuthServer": "nodemon AuthServer.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "cors": "^2.8.5",
     "express": "^4.17.3",
     "nhaccuatui-api-full": "^1.1.0",
     "zingmp3-api-full": "^1.0.12"
