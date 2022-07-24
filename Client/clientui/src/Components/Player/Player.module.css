@@ -13,52 +13,48 @@
 }
 .ControlSong {
 }
-.ControlSongBtn{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
+.ControlSongBtn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.BtnControlSong{
-    margin: 0 10px;
+.BtnControlSong {
+  margin: 0 10px;
 }
 
-.TimeSong{
-    display: flex;
-    
+.TimeSong {
+  display: flex;
 }
-.RangeTimeSong{
-    width: 100%;
+.RangeTimeSong {
+  width: 100%;
 }
-.BtnPLayAndPause{
-    font-size: 2rem;
+.BtnPLayAndPause {
+  font-size: 2rem;
 }
 .RandomActive,
-.LoopActive{
-    color: rgb(116, 192, 116);
+.LoopActive {
+  color: rgb(116, 192, 116);
 }
-.LeftSideConTainer{
-display: flex;
-align-items: center;
-    height: 100%;
-    width: 100%;
+.LeftSideConTainer {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  width: 100%;
 }
-.LeftSideSongImg{
-    height: 50px;
-    width: 50px;
-    background-position: center;
-    background-size: cover;
-    
+.LeftSideSongImg {
+  height: 50px;
+  width: 50px;
+  background-position: center;
+  background-size: cover;
 }
-.TitleSong{
-    white-space: nowrap;
-    /* width: 40px; */
-    overflow: hidden;
-    text-overflow: ellipsis;
+.TitleSong {
+  white-space: nowrap;
+  /* width: 40px; */
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
-
-.RighSidePlayer{
-    height: 100%;
+.RighSidePlayer {
+  height: 100%;
 }

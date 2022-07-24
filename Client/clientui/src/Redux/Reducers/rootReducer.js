@@ -16,6 +16,7 @@ const InitialState = {
   ImageSongPlaying: localStorage.getItem("song")
     ? JSON.parse(localStorage.getItem("song")).img
     : "",
+  Volume:localStorage.getItem("song") ? JSON.parse(localStorage.getItem("song")).Volume : 0.45
 };
 
 const rootReducer = function (state = InitialState, action) {

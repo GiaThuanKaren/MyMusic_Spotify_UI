@@ -91,16 +91,19 @@ function Player() {
           console.log(item.data["128"]);
           setSong(item.data["128"]);
         })
-        .catch(e=>{
-          if(e){
-            
+        .catch((e) => {
+          if (e) {
             // console.log()
-            
+
             ChangeToNextSong(1);
           }
-        })
+        });
     }
   }, [GlobalState.Song]);
+  useEffect(() => {
+    console.log("Fix audio Volume");
+    EleAudio.current.volume = 0.25;
+  }, []);
   // console.log(" Player runiing",EleAudio)
   // console.log(GlobalState.isPlaying, "Player",typeof EleAudio.current);
   return (
@@ -214,13 +217,14 @@ function Player() {
             <p>{timeSong.timeCurrent ? timeSong.timeCurrent : "00 : 00"}</p>
             <input
               onChange={(e) => {
-                const TimeSeek = (e.target.value * EleAudio.current.duration)/100
+                const TimeSeek =
+                  (e.target.value * EleAudio.current.duration) / 100;
                 // console.log(TimeSeek)
-                EleAudio.current.currentTime=TimeSeek
+                EleAudio.current.currentTime = TimeSeek;
                 SettimeSong({
                   ...timeSong,
-                  PerCent:e.target.value
-                })
+                  PerCent: e.target.value,
+                });
                 // console.log(e.target.value)
               }}
               className={`${style.RangeTimeSong}`}
@@ -254,13 +258,21 @@ function Player() {
           </Grid>
           <Grid item>
             <input
-            onChange={(e)=>{
-              
-              SetvolumPerCent((e.target.value/100).toFixed(1))
-              EleAudio.current.volume=e.target.value/100
-            }} 
-            defaultValue={0.3}
-             type={"range"} min={0} max={100} step={1} />
+              onChange={(e) => {
+                SetvolumPerCent((e.target.value / 100).toFixed(1));
+                EleAudio.current.volume = e.target.value / 100;
+              }}
+              // value={volumPerCent}
+              // onChange={(e) => {
+              //   SetvolumPerCent((e.target.value / 100).toFixed(1));
+              //   EleAudio.current.volume = e.target.value / 100;
+              // }}
+              defaultValue={0.3}
+              type={"range"}
+              min={0}
+              max={100}
+              step={1}
+            />
           </Grid>
         </Grid>
       </Grid>

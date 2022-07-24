@@ -1,4 +1,4 @@
-import { Grid } from "@mui/material";
+import { Grid, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useCurrentPath } from "../../CustomHooks/useCurrentPath";
@@ -71,11 +71,17 @@ function LeftSideBar() {
                 }  ${styles.ItemLeftMenu} `}
                 to="/"
               >
-                <FontAwesomeIcon
-                  className={`${styles.Icon} `}
-                  icon={IconSolid.faHome}
-                />
-                <p className="textNotActive">Trang Chủ</p>
+                <Typography
+                  className="textNotActive"
+                  component={"p"}
+                  fontWeight="500"
+                >
+                  <FontAwesomeIcon
+                    className={`${styles.Icon} `}
+                    icon={IconSolid.faHome}
+                  />
+                  Trang Chủ
+                </Typography>
               </Link>
             </li>
             <li>
@@ -85,11 +91,17 @@ function LeftSideBar() {
                 } 1     ${styles.TextHover}  ${styles.ItemLeftMenu}`}
                 to="/Search"
               >
-                <FontAwesomeIcon
-                  className={`${styles.Icon}`}
-                  icon={IconSolid.faSearch}
-                />
-                <p className="textNotActive">Tìm Kiếm</p>
+                <Typography
+                  className="textNotActive"
+                  component={"p"}
+                  fontWeight="500"
+                >
+                  <FontAwesomeIcon
+                    className={`${styles.Icon}`}
+                    icon={IconSolid.faSearch}
+                  />
+                  Tìm Kiếm
+                </Typography>
               </Link>
             </li>
             <li>
@@ -111,8 +123,10 @@ function LeftSideBar() {
           <ul className={`${styles.ListItem}`}>
             <Link
               className={`${styles.LinkTag} ${
-                  pathname == PublicRoute.CreateNewPL ? styles.TextActiveHover : ""
-                } ${styles.TextHover}  ${styles.ItemLeftMenu}`}
+                pathname == PublicRoute.CreateNewPL
+                  ? styles.TextActiveHover
+                  : ""
+              } ${styles.TextHover}  ${styles.ItemLeftMenu}`}
               to="/createNewPL"
             >
               <FontAwesomeIcon
@@ -123,8 +137,8 @@ function LeftSideBar() {
             </Link>
             <Link
               className={`${styles.LinkTag} ${
-                  pathname == PublicRoute.Liked ? styles.TextActiveHover : ""
-                }  ${styles.TextHover} ${styles.ItemLeftMenu}`}
+                pathname == PublicRoute.Liked ? styles.TextActiveHover : ""
+              }  ${styles.TextHover} ${styles.ItemLeftMenu}`}
               to="/liked"
             >
               <FontAwesomeIcon
@@ -148,7 +162,7 @@ function LeftSideBar() {
                       }}
                       idsong={item.encodeId}
                       className={`${styles.LinkTag} ${
-                        select == item.title && pathname =='/show'
+                        select == item.title && pathname == "/show"
                           ? styles.TextActiveHover
                           : styles.TextHover
                       } ${styles.ItemLeftMenu}`}
