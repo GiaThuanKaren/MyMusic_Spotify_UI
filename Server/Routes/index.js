@@ -50,11 +50,11 @@ module.exports = function Routes(app) {
     //   .then(res=>{
     //     console.log(res)
     //   })
-    
+
     let idPlaylist = req.params.id ? req.params.id : "";
-    console.log(idPlaylist)
+    console.log(idPlaylist);
     ZingMp3.getDetailPlaylist(idPlaylist)
-      .then((data) => {                   
+      .then((data) => {
         // console.log(data.data.song.items)
         let ArrSong = data.data.song.items;
         let IdSongArr = ArrSong.map(function (item, idx) {
@@ -70,4 +70,12 @@ module.exports = function Routes(app) {
         res.status(404).json(e);
       });
   });
+ 
+  app.get("/search",async (req,res)=>{  
+    let searchText = req.query.q;
+    console.log(searchText)
+    let data = await ZingMp3.search(searchText ? searchText : "");
+    res.json(data)
+    
+  })
 };
