@@ -111,11 +111,17 @@ function LeftSideBar() {
                 } ${styles.TextHover}  ${styles.ItemLeftMenu}`}
                 to="/Library"
               >
-                <FontAwesomeIcon
-                  className={`${styles.Icon}`}
-                  icon={IconSolid.faBookBookmark}
-                />
-                <p>Thư Viện</p>
+                <Typography
+                  className="textNotActive"
+                  component={"p"}
+                  fontWeight="500"
+                >
+                  <FontAwesomeIcon
+                    className={`${styles.Icon}`}
+                    icon={IconSolid.faBookBookmark}
+                  />
+                  Thư Viện
+                </Typography>
               </Link>
             </li>
           </ul>
@@ -129,11 +135,17 @@ function LeftSideBar() {
               } ${styles.TextHover}  ${styles.ItemLeftMenu}`}
               to="/createNewPL"
             >
-              <FontAwesomeIcon
-                className={`${styles.Icon}`}
-                icon={IconSolid.faMusic}
-              />
-              <p>Tạo Playlist</p>
+              <Typography
+                className="textNotActive"
+                component={"p"}
+                fontWeight="500"
+              >
+                <FontAwesomeIcon
+                  className={`${styles.Icon}`}
+                  icon={IconSolid.faMusic}
+                />
+                Tạo Playlist
+              </Typography>
             </Link>
             <Link
               className={`${styles.LinkTag} ${
@@ -141,11 +153,17 @@ function LeftSideBar() {
               }  ${styles.TextHover} ${styles.ItemLeftMenu}`}
               to="/liked"
             >
-              <FontAwesomeIcon
-                className={`${styles.Icon}`}
-                icon={IconSolid.faHeart}
-              />
-              <p>Bài hát đã thích</p>
+              <Typography
+                className="textNotActive"
+                component={"p"}
+                fontWeight="500"
+              >
+                <FontAwesomeIcon
+                  className={`${styles.Icon}`}
+                  icon={IconSolid.faHeart}
+                />
+                Bài hát đã thích
+              </Typography>
             </Link>
           </ul>
 
@@ -167,7 +185,9 @@ function LeftSideBar() {
                           : styles.TextHover
                       } ${styles.ItemLeftMenu}`}
                     >
-                      {item.title}
+                      <Typography component="p" fontWeight={400} >
+                        {item.title}
+                      </Typography>
                     </Link>
                   </>
                 ))

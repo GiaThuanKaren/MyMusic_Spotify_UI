@@ -87,9 +87,9 @@ function DetailPlaylist() {
         
       </div>
       <div ref={EleContainer} className={`${style.DetailPlayList}`}>
-        <div className={`${style.SectionInfoPlaylist}`}>
+        {/* <div className={`${style.SectionInfoPlaylist}`}>
           <h1>Section Info PlayList</h1>
-        </div>
+        </div> */}
         <div className={`${style.PlayBtnDetailPlayList}`}>
           {GlobalState.isPlaying ? (
             <FontAwesomeIcon

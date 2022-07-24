@@ -44,6 +44,7 @@
 }
 
 .ListPlayList{
+    margin: 10px 0 ;
     height: 200px;
     overflow-y: auto;
     overflow-x: hidden;
