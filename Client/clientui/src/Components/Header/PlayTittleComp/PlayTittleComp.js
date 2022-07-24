@@ -1,4 +1,5 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Typography } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import { SetActivePlay } from "../../../Redux/Actions/Actions";
 import { IconSolid } from "../../../util/FontAwesome/FontAwesome";
@@ -9,7 +10,7 @@ function PlayTittleComp({ tittle }) {
   const GlobalState = useSelector((state) => state);
   const dispatch = useDispatch();
   const SetStatusPlaying = function () {
-    SelectItemToPlay(GlobalState.EleAudio,GlobalState.isPlaying)
+    SelectItemToPlay(GlobalState.EleAudio, GlobalState.isPlaying);
     dispatch(SetActivePlay(!GlobalState.isPlaying));
   };
   console.log("PlayTittle Comp ", GlobalState.isPlaying);
@@ -33,7 +34,9 @@ function PlayTittleComp({ tittle }) {
           />
         )}
       </div>
-      <p>{tittle ? tittle : "Default Tittle"}</p>
+      <Typography component={"h3"} fontWeight={600} fontSize={"1.1rem"}>
+        {tittle ? tittle : "Default Tittle"}
+      </Typography>
     </div>
   );
 }
