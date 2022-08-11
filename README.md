@@ -2,7 +2,8 @@
 
 # Demo
 
-![image](https://user-images.githubusercontent.com/86192249/180638463-1354923a-9cf3-4d20-b5e8-3b0c4cb5020a.png)
+![image](https://user-images.githubusercontent.com/86192249/184149037-1801f949-5fd2-43c5-ad2f-40bd98dc4e17.png)
+
 
 
 # How to run :
