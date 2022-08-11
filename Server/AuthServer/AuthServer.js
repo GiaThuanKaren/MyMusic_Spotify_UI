@@ -13,4 +13,4 @@ connect();
 Routes(app);
 app.listen(PORT,()=>{
     console.log("Running Auth Server at "+ PORT)
-})
+}) 

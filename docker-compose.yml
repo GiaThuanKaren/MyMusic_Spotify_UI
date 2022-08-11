@@ -1,10 +1,15 @@
 version: '3.8'
 services:
-  backend:
-    build: ./Server
-    container_name: "backendnctv1"
+  mainserver:
+    build: ./Server/MainServer
+    container_name: "mainserver"
     ports:
       - 5000:5000
+  authserver:
+    build: ./Server/AuthServer
+    container_name: "authserver"
+    ports:
+      - 5001:5001
   frontend:
     build: ./Client/clientui
     container_name: "frontendnctv1"
