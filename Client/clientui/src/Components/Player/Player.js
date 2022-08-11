@@ -258,6 +258,7 @@ function Player() {
           </Grid>
           <Grid item>
             <input
+              defaultValue={40}
               onChange={(e) => {
                 SetvolumPerCent((e.target.value / 100).toFixed(1));
                 EleAudio.current.volume = e.target.value / 100;
@@ -267,7 +268,7 @@ function Player() {
               //   SetvolumPerCent((e.target.value / 100).toFixed(1));
               //   EleAudio.current.volume = e.target.value / 100;
               // }}
-              defaultValue={0.3}
+
               type={"range"}
               min={0}
               max={100}

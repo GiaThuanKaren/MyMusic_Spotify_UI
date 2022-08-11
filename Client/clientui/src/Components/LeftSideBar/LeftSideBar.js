@@ -185,8 +185,9 @@ function LeftSideBar() {
                           : styles.TextHover
                       } ${styles.ItemLeftMenu}`}
                     >
-                      <Typography component="p" fontWeight={400} >
+                      <Typography fontSize={"0.9rem"} component="p" fontWeight={400} >
                         {item.title}
+                        {select == item.title && <FontAwesomeIcon icon={IconSolid.faVolumeHigh} />}
                       </Typography>
                     </Link>
                   </>
