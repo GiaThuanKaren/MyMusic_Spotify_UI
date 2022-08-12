@@ -93,7 +93,7 @@ function Player() {
         .catch(e => {
           if (e) {
             // console.log()
-
+            console.log(e,"Player")
             ChangeToNextSong(1)
           }
         })
