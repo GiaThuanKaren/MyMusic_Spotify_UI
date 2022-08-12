@@ -1,21 +1,21 @@
-import logo from "./logo.svg";
-import { Grid } from "@mui/material";
-import "./App.css";
-import "./GlobalStyles.css";
-import LeftSideBar from "./Components/LeftSideBar/LeftSideBar";
-import { Routes, Route, Link } from "react-router-dom";
+import logo from "./logo.svg"
+import { Grid } from "@mui/material"
+import "./App.css"
+import "./GlobalStyles.css"
+import LeftSideBar from "./Components/LeftSideBar/LeftSideBar"
+import { Routes, Route, Link } from "react-router-dom"
 
-import Search from "./Components/Search/Search";
-import Libraray from "./Components/Library/Libraray";
-import CreatePlayList from "./Components/CreatePlayList/CreatePlayList";
-import Liked from "./Components/Liked/Liked";
-import Player from "./Components/Player/Player";
-import DetailPlaylist from "./Components/DetailPlaylist/DetailPlaylist";
+import Search from "./Components/Search/Search"
+import Libraray from "./Components/Library/Libraray"
+import CreatePlayList from "./Components/CreatePlayList/CreatePlayList"
+import Liked from "./Components/Liked/Liked"
+import Player from "./Components/Player/Player"
+import DetailPlaylist from "./Components/DetailPlaylist/DetailPlaylist"
 
 import RightSideBar, {
-  MainHomeRightSideBar,
-} from "./Components/RightSideBar/RightSideBar";
-import { PublicRoute } from "./Routes/PublicRoute";
+  MainHomeRightSideBar
+} from "./Components/RightSideBar/RightSideBar"
+import { PublicRoute } from "./Routes/PublicRoute"
 function App() {
   return (
     <>
@@ -39,7 +39,7 @@ function App() {
         <Player />
       </Grid>
     </>
-  );
+  )
 }
 
-export default App;
+export default App

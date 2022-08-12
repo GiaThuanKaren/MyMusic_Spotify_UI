@@ -1,9 +1,9 @@
 import SetStatusEleAudio, {
-  SelectItemToPlay,
-} from "../../util/Functions/SetStatusEleAudio";
+  SelectItemToPlay
+} from "../../util/Functions/SetStatusEleAudio"
 
 const InitialState = {
-  indexSong:0,
+  indexSong: 0,
   isPlaying: false,
   EleAudio: null,
   Song: localStorage.getItem("song")
@@ -16,28 +16,30 @@ const InitialState = {
   ImageSongPlaying: localStorage.getItem("song")
     ? JSON.parse(localStorage.getItem("song")).img
     : "",
-  Volume:localStorage.getItem("song") ? JSON.parse(localStorage.getItem("song")).Volume : 0.45
-};
+  Volume: localStorage.getItem("song")
+    ? JSON.parse(localStorage.getItem("song")).Volume
+    : 0.45
+}
 
 const rootReducer = function (state = InitialState, action) {
   switch (action.type) {
     case "SETACTIVEPLAY": {
-      console.log(state, action.payload);
-      SelectItemToPlay(state.EleAudio, action.payload);
+      console.log(state, action.payload)
+      SelectItemToPlay(state.EleAudio, action.payload)
       // SetStatusEleAudio(state.EleAudio,action.payload)
       return {
         ...state,
-        isPlaying: action.payload,
-      };
-      break;
+        isPlaying: action.payload
+      }
+      break
     }
     case "SetEleGlobal": {
-      console.log(action.payload, " ELE");
+      console.log(action.payload, " ELE")
       return {
         ...state,
-        EleAudio: action.payload,
-      };
-      break;
+        EleAudio: action.payload
+      }
+      break
     }
     case "SetSong": {
       return {
@@ -45,25 +47,25 @@ const rootReducer = function (state = InitialState, action) {
         Song: action.payload.id,
         TittleSong: action.payload.name,
         ImageSongPlaying: action.payload.img,
-        indexSong:action.payload.indexSong
-      };
+        indexSong: action.payload.indexSong
+      }
     }
     case "SetTittleSong": {
       return {
         ...state,
-        TittleSong: action.payload,
-      };
+        TittleSong: action.payload
+      }
     }
     case "SetSongQueue": {
       return {
         ...state,
-        SongQueue: action.payload,
-      };
+        SongQueue: action.payload
+      }
     }
     default: {
-      return state;
+      return state
     }
   }
-};
+}
 
-export default rootReducer;
+export default rootReducer

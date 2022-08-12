@@ -1,26 +1,26 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Typography } from "@mui/material";
-import { useDispatch, useSelector } from "react-redux";
-import { SetActivePlay } from "../../../Redux/Actions/Actions";
-import { IconSolid } from "../../../util/FontAwesome/FontAwesome";
-import { SelectItemToPlay } from "../../../util/Functions/SetStatusEleAudio";
-import style from "./PlayTittleComp.module.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { Typography } from "@mui/material"
+import { useDispatch, useSelector } from "react-redux"
+import { SetActivePlay } from "../../../Redux/Actions/Actions"
+import { IconSolid } from "../../../util/FontAwesome/FontAwesome"
+import { SelectItemToPlay } from "../../../util/Functions/SetStatusEleAudio"
+import style from "./PlayTittleComp.module.css"
 
 function PlayTittleComp({ tittle }) {
-  const GlobalState = useSelector((state) => state);
-  const dispatch = useDispatch();
+  const GlobalState = useSelector(state => state)
+  const dispatch = useDispatch()
   const SetStatusPlaying = function () {
-    SelectItemToPlay(GlobalState.EleAudio, GlobalState.isPlaying);
-    dispatch(SetActivePlay(!GlobalState.isPlaying));
-  };
-  console.log("PlayTittle Comp ", GlobalState.isPlaying);
+    SelectItemToPlay(GlobalState.EleAudio, GlobalState.isPlaying)
+    dispatch(SetActivePlay(!GlobalState.isPlaying))
+  }
+  console.log("PlayTittle Comp ", GlobalState.isPlaying)
   return (
     <div className={`${style.PlayTitleComp}`}>
       <div className={`${style.PlayBtn}`}>
         {GlobalState.isPlaying ? (
           <FontAwesomeIcon
             onClick={() => {
-              SetStatusPlaying();
+              SetStatusPlaying()
               // dispatch(SetActivePlay(!GlobalState.isPlaying));
             }}
             icon={IconSolid.faPause}
@@ -28,7 +28,7 @@ function PlayTittleComp({ tittle }) {
         ) : (
           <FontAwesomeIcon
             onClick={() => {
-              SetStatusPlaying();
+              SetStatusPlaying()
             }}
             icon={IconSolid.faPlay}
           />
@@ -38,7 +38,7 @@ function PlayTittleComp({ tittle }) {
         {tittle ? tittle : "Default Tittle"}
       </Typography>
     </div>
-  );
+  )
 }
 
-export default PlayTittleComp;
+export default PlayTittleComp

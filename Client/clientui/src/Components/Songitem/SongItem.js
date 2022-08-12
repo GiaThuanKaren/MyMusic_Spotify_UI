@@ -1,27 +1,27 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Grid } from "@mui/material";
-import React from "react";
-import { useNavigate } from "react-router-dom";
-import { IconSolid } from "../../util/FontAwesome/FontAwesome";
-import style from "./SongItem.module.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { Grid } from "@mui/material"
+import React from "react"
+import { useNavigate } from "react-router-dom"
+import { IconSolid } from "../../util/FontAwesome/FontAwesome"
+import style from "./SongItem.module.css"
 function SongItem({
   IdSongItem,
   tittle,
   Artists,
   Thumbnail,
   isWrap,
-  IsHaveBtn,
+  IsHaveBtn
 }) {
-  const navigate = useNavigate();
+  const navigate = useNavigate()
   const Direct = function (id) {
-    console.log(id);
-    navigate(`/show?id=${id}`);
-  };
+    console.log(id)
+    navigate(`/show?id=${id}`)
+  }
   return (
     <Grid item lg={2} md={2} sm={3} xs={4}>
       <div
         onClick={() => {
-          Direct(IdSongItem);
+          Direct(IdSongItem)
         }}
         idsong={IdSongItem}
         className={`${style.SongItem}`}
@@ -55,7 +55,7 @@ function SongItem({
         </div>
       </div>
     </Grid>
-  );
+  )
 }
 
-export default SongItem;
+export default SongItem

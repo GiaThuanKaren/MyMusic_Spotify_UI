@@ -1,41 +1,41 @@
-import { Grid, Typography } from "@mui/material";
-import { useEffect, useState } from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
-import { useCurrentPath } from "../../CustomHooks/useCurrentPath";
-import { PublicRoute } from "../../Routes/PublicRoute";
-import { FontAwesomeIcon, IconSolid } from "../../util/FontAwesome/FontAwesome";
-import styles from "./LeftSideBar.module.css";
+import { Grid, Typography } from "@mui/material"
+import { useEffect, useState } from "react"
+import { Link, useLocation, useNavigate } from "react-router-dom"
+import { useCurrentPath } from "../../CustomHooks/useCurrentPath"
+import { PublicRoute } from "../../Routes/PublicRoute"
+import { FontAwesomeIcon, IconSolid } from "../../util/FontAwesome/FontAwesome"
+import styles from "./LeftSideBar.module.css"
 
 function LeftSideBar() {
-  const navigate = useNavigate();
-  const { pathname } = useLocation();
-  console.log(pathname);
+  const navigate = useNavigate()
+  const { pathname } = useLocation()
+  console.log(pathname)
   // const currentPath = useCurrentPath();
-  const [select, SetSelect] = useState("");
+  const [select, SetSelect] = useState("")
   const [properties, SetProperties] = useState({
     dataPlayList: [],
-    isFetching: true,
-  });
+    isFetching: true
+  })
   const GetAttr = function (ele) {
-    console.log(ele);
-  };
+    console.log(ele)
+  }
   const SetActive = function (ele) {
-    console.log(ele);
+    console.log(ele)
     // console.log(document.querySelectorAll(".LeftSideBar_LinkTag__Ema9C"))
     // console.log(ele.target.innerHTML,ele.target.parentElement);
-  };
+  }
   useEffect(() => {
     fetch(`http://localhost:5000/top100`)
-      .then((res) => res.json())
-      .then((items) => {
-        let result = items;
+      .then(res => res.json())
+      .then(items => {
+        let result = items
         SetProperties({
           isFetching: false,
-          dataPlayList: [...result[0].items],
-        });
-        console.log(items);
-      });
-  }, []);
+          dataPlayList: [...result[0].items]
+        })
+        console.log(items)
+      })
+  }, [])
   // console.log(properties.dataPlayList);
   return (
     <>
@@ -61,8 +61,8 @@ function LeftSideBar() {
           </div>
           <ul className={`${styles.ListItem}`}>
             <li
-              onClick={(e) => {
-                SetActive(e);
+              onClick={e => {
+                SetActive(e)
               }}
             >
               <Link
@@ -176,7 +176,7 @@ function LeftSideBar() {
                       to={`/show?id=${item.encodeId}`}
                       onClick={() => {
                         // navigate(`/show?id=${item.encodeId}`)
-                        SetSelect(item.title);
+                        SetSelect(item.title)
                       }}
                       idsong={item.encodeId}
                       className={`${styles.LinkTag} ${
@@ -185,9 +185,15 @@ function LeftSideBar() {
                           : styles.TextHover
                       } ${styles.ItemLeftMenu}`}
                     >
-                      <Typography fontSize={"0.9rem"} component="p" fontWeight={400} >
+                      <Typography
+                        fontSize={"0.9rem"}
+                        component="p"
+                        fontWeight={400}
+                      >
                         {item.title}
-                        {select == item.title && <FontAwesomeIcon icon={IconSolid.faVolumeHigh} />}
+                        {select == item.title && (
+                          <FontAwesomeIcon icon={IconSolid.faVolumeHigh} />
+                        )}
                       </Typography>
                     </Link>
                   </>
@@ -197,7 +203,7 @@ function LeftSideBar() {
         </div>
       </Grid>
     </>
-  );
+  )
 }
 
-export default LeftSideBar;
+export default LeftSideBar

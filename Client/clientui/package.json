@@ -23,6 +23,10 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
+    "lint": "eslint --ext js,jsx,ts,tsx src/",
+    "lint:fix": "eslint --fix --ext js,jsx,ts,tsx src/",
+    "prettier": "prettier --check \"src/**/(*.tsx|*.ts|*.jsx|*.js|*.scss|*.css)\"",
+    "prettier:fix": "prettier --write \"src/**/(*.tsx|*.ts|*.jsx|*.js|*.scss|*.css)\"",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
@@ -45,5 +49,10 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "prettier": "^2.7.1"
   }
 }

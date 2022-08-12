@@ -7,6 +7,8 @@
 
 
 # How to run :
+#Docker 
+  --- Make sure you have already installed docker in your OS ---
   1) Clone this repo to your folder.
   2) Cd to root directory .
   3) run command : docker-compose up ( to create and build image and container )

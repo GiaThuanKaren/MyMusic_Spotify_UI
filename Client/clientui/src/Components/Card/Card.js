@@ -1,9 +1,9 @@
-import * as React from "react";
-import Card from "@mui/material/Card";
-import CardContent from "@mui/material/CardContent";
-import CardMedia from "@mui/material/CardMedia";
-import Typography from "@mui/material/Typography";
-import { CardActionArea, Grid } from "@mui/material";
+import * as React from "react"
+import Card from "@mui/material/Card"
+import CardContent from "@mui/material/CardContent"
+import CardMedia from "@mui/material/CardMedia"
+import Typography from "@mui/material/Typography"
+import { CardActionArea, Grid } from "@mui/material"
 
 // document.querySelectorAll(".Em2LrSSfvrgXQoajs6cm img").forEach(item=>{
 //     console.log(item.src)
@@ -25,7 +25,7 @@ export default function CardCatologe({ Imgpath, tittle, description }) {
               sx={{
                 overflow: "hidden",
                 textOverflow: "ellipsis",
-                WebkitLineClamp: 2,
+                WebkitLineClamp: 2
               }}
               component="p"
             >
@@ -38,5 +38,5 @@ export default function CardCatologe({ Imgpath, tittle, description }) {
         </CardActionArea>
       </Card>
     </Grid>
-  );
+  )
 }
