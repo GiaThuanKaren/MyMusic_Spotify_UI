@@ -1,10 +1,13 @@
+import { Card, Grid } from '@mui/material'
 import React from 'react'
+import CardCatologe from '../Card/Card'
 import style from "./Libraray.module.css"
 function Libraray() {
+
     return (
-        <div>
-            <h1>This Is Libraray Section</h1>
-        </div>
+       <Grid container spacing={4} className={`${style.Main_Container}`} > 
+            <CardCatologe />
+       </Grid>
     )
 }
 

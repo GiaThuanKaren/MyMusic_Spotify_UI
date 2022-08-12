@@ -55,7 +55,7 @@ function DetailPlaylist() {
         console.log(data, sortDescription, title, song, artistsNames);
       })
       .catch((e) => {
-        alert("Bài Này Thuộc Tài Khoản VIP , Vui Lòng Chọn Bài Khác ạ");
+        alert("Bài Này Thuộc Tài Khoản VIP , Vui Lòng Chọn Bài Khác ");
         console.log("Detail Playlist ", e);
       });
   }, [param]);
@@ -136,7 +136,6 @@ function DetailPlaylist() {
                     style={{ backgroundImage: `url(${item.thumbnailM})` }}
                     className={`${style.Left_ListSongItem_Img}`}
                   >
-                    {/* <img src={item.thumbnailM} style={{width:"100%", height:"auto",objectFit:"cover"}} src=""/> */}
                   </div>
                   <p className={`${style.TitleSong}`}>{item.title}</p>
                 </div>
