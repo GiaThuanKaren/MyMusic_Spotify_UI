@@ -12,7 +12,7 @@ export function MainHomeRightSideBar() {
     PlayList1: []
   })
   useEffect(() => {
-    fetch(`http://localhost:5000/top100`)
+    fetch(`https://sportifymainserver.herokuapp.com/top100`)
       .then(res => res.json())
       .then(items => {
         // let arr = items.items

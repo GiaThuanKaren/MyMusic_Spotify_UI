@@ -25,7 +25,7 @@ function LeftSideBar() {
     // console.log(ele.target.innerHTML,ele.target.parentElement);
   }
   useEffect(() => {
-    fetch(`http://localhost:5000/top100`)
+    fetch(`https://sportifymainserver.herokuapp.com/top100`)
       .then(res => res.json())
       .then(items => {
         let result = items

@@ -37,7 +37,7 @@ function DetailPlaylist() {
     dispatch(SetActivePlay(!GlobalState.isPlaying))
   }
   useEffect(() => {
-    fetch(`http://localhost:5000/detail/${param}`)
+    fetch(`https://sportifymainserver.herokuapp.com/detail/${param}`)
       .then(res => res.json())
       .then(items => {
         const { data } = items

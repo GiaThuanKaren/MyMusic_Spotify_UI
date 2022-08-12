@@ -83,7 +83,7 @@ function Player() {
 
     if (GlobalState.Song != "") {
       console.log("New ID ", GlobalState.Song)
-      fetch(`http://localhost:5000/song/${GlobalState.Song}`)
+      fetch(`https://sportifymainserver.herokuapp.com/song/${GlobalState.Song}`)
         .then(res => res.json())
         .then(item => {
           // const {} = item.data;
@@ -191,7 +191,7 @@ function Player() {
                 if (loop) {
                   dispacth(SetActivePlay(true))
                   let a = EleAudio.current.loop
-                } else ChangeToNextSong(1)
+                } else return ChangeToNextSong(1)
               }}
               onTimeUpdate={e => {
                 let timecur = ConvertTimePlaying(e.target.currentTime)
