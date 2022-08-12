@@ -21,7 +21,14 @@ export default function CardCatologe({ Imgpath, tittle, description }) {
             alt="Ablum image"
           />
           <CardContent>
-            <Typography  component="p">
+            <Typography
+              sx={{
+                overflow: "hidden",
+                textOverflow: "ellipsis",
+                WebkitLineClamp: 2,
+              }}
+              component="p"
+            >
               {tittle}
             </Typography>
             <Typography variant="body2" color="text.secondary">
