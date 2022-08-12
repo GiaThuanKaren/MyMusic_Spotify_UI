@@ -21,7 +21,7 @@ export default function CardCatologe({ Imgpath, tittle, description }) {
             alt="Ablum image"
           />
           <CardContent>
-            <Typography gutterBottom variant="h5" component="div">
+            <Typography  component="p">
               {tittle}
             </Typography>
             <Typography variant="body2" color="text.secondary">

@@ -6,11 +6,17 @@ import axious from "axios";
 const ListrowpayListLibrary = function ({ title, ListPlayListAblum }) {
   return (
     <>
-      <div>
-        <Typography component={"p"}>{title}</Typography>
-        {ListPlayListAblum.map((item, idx) => {
-          return <>ds</>;
-        })}
+      <div className={`${style.List_Row_Library_Container}`}>
+        <Typography fontSize={"1.2rem"} fontWeight={500} component={"h3"}>{title}</Typography>
+        <Grid container spacing={3}>
+          {ListPlayListAblum.map((item, idx) => {
+            return (
+              <>
+                <CardCatologe Imgpath={item.thumbnail} tittle={item.title} />
+              </>
+            );
+          })}
+        </Grid>
       </div>
     </>
   );
@@ -33,20 +39,17 @@ function Libraray() {
   }, []);
   console.log(ListPlayList);
   return (
-    <Grid container spacing={4}>
-      {/* <CardCatologe /> */}
-      <div className={`${style.Main_Container}`}>
-        {ListPlayList.length != 0 &&
-          ListPlayList.map((item, idx) => {
-            return (
-              <ListrowpayListLibrary
-                title={item.title ? item.title : " Default Tittle"}
-                ListPlayListAblum={item.items}
-              />
-            );
-          })}
-      </div>
-    </Grid>
+    <div className={`${style.Main_Container}`}>
+      {ListPlayList.length != 0 &&
+        ListPlayList.map((item, idx) => {
+          return (
+            <ListrowpayListLibrary
+              title={item.title ? item.title : " Default Tittle"}
+              ListPlayListAblum={item.items}
+            />
+          );
+        })}
+    </div>
   );
 }
 
