@@ -26,3 +26,10 @@ export const SetSongQueue = function (payload) {
     payload: payload
   }
 }
+
+export const SetIsLoading = function (payload) {
+  return {
+    type: "SetIsLoading",
+    payload: payload
+  }
+}

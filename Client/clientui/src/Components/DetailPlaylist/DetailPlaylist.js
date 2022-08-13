@@ -36,6 +36,7 @@ function DetailPlaylist() {
     SelectItemToPlay(GlobalState.EleAudio, GlobalState.isPlaying)
     dispatch(SetActivePlay(!GlobalState.isPlaying))
   }
+
   useEffect(() => {
     fetch(`https://sportifymainserver.herokuapp.com/detail/${param}`)
       .then(res => res.json())
@@ -55,7 +56,6 @@ function DetailPlaylist() {
         console.log(data, sortDescription, title, song, artistsNames)
       })
       .catch(e => {
-        alert("Bài Này Thuộc Tài Khoản VIP , Vui Lòng Chọn Bài Khác ")
         console.log("Detail Playlist ", e)
       })
   }, [param])

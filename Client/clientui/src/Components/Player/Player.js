@@ -83,21 +83,31 @@ function Player() {
 
     if (GlobalState.Song != "") {
       console.log("New ID ", GlobalState.Song)
-      fetch(`https://sportifymainserver.herokuapp.com/song/${GlobalState.Song}`)
+      console.log(
+        `https://sportifymainserver.herokuapp.com/song/${GlobalState.Song}`
+      )
+      // http://localhost:5000
+      // https://sportifymainserver.herokuapp.com
+      fetch(`http://localhost:5000/song/${GlobalState.Song}`)
         .then(res => res.json())
+        // ZingMp3.getSong(GlobalState.Song)
         .then(item => {
           // const {} = item.data;
           console.log(item.data["128"])
+
           setSong(item.data["128"])
         })
         .catch(e => {
           if (e) {
             // console.log()
-            console.log(e,"Player")
+            alert("Bài Này Thuộc Tài Khoản VIP , Vui Lòng Chọn Bài Khác ")
+
+            console.log(e, "Player")
             ChangeToNextSong(1)
           }
         })
     }
+    dispacth(SetEleToGlobal(EleAudio.current))
   }, [GlobalState.Song])
   useEffect(() => {
     console.log("Fix audio Volume")
@@ -171,9 +181,10 @@ function Player() {
           </div>
           <div className={`${style.TimeSong}`}>
             <audio
+              crossOrigin="use-credentials
+              "
               onLoadedData={() => {
                 console.log("Loaded Data ")
-                dispacth(SetEleToGlobal(EleAudio.current))
                 SettimeSong({
                   ...timeSong,
                   duration: ConvertTimePlaying(EleAudio.current.duration)

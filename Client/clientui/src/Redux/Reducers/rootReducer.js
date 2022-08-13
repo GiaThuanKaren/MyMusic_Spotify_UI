@@ -18,7 +18,8 @@ const InitialState = {
     : "",
   Volume: localStorage.getItem("song")
     ? JSON.parse(localStorage.getItem("song")).Volume
-    : 0.45
+    : 0,
+  IsLoading: true
 }
 
 const rootReducer = function (state = InitialState, action) {
@@ -60,6 +61,12 @@ const rootReducer = function (state = InitialState, action) {
       return {
         ...state,
         SongQueue: action.payload
+      }
+    }
+    case "SetIsLoading": {
+      return {
+        ...state,
+        IsLoading: action.payload
       }
     }
     default: {
