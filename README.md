@@ -1,5 +1,13 @@
 # MyMusic_Spotify_UI
 
+
+Các công nghệ , ngôn ngữ , Framework /Lib được dùng trong project
+-Front end :React JS , Redux , Firebase , Material UI , Font Awesome Icon ,CSS module
+
+-Back end : ExpressJs , MongoDB , Mongoose , Zing MP3 API , Docker
+
+-Các công nghệ khác : JWT ( Xác thực đăng ký , đăng nhập , )
+
 # Demo
 
 ![image](https://user-images.githubusercontent.com/86192249/184149037-1801f949-5fd2-43c5-ad2f-40bd98dc4e17.png)
