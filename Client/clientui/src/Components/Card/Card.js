@@ -12,7 +12,7 @@ import { CardActionArea, Grid } from "@mui/material"
 export default function CardCatologe({ Imgpath, tittle, description }) {
   return (
     <Grid item lg={2} xl={2} md={2} sm={4} xs={6}>
-      <Card sx={{ width: "100%" }}>
+      <Card sx={{ width: "100%", height: "250px", padding: "5px" }}>
         <CardActionArea>
           <CardMedia
             component="img"

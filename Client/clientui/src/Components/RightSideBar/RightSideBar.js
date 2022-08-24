@@ -11,6 +11,7 @@ export function MainHomeRightSideBar() {
   const [properties, SetProperties] = useState({
     PlayList1: []
   })
+  
   useEffect(() => {
     fetch(`https://sportifymainserver.herokuapp.com/top100`)
       .then(res => res.json())
@@ -58,7 +59,9 @@ function RightSideBar() {
       <Grid item lg={9} md={8} xs={12} sm={9}>
         <div className={styles["Main-Container"]}>
           <Header />
-          <Outlet />
+          <div className={`${styles.Scroll_Container}`}>
+            <Outlet />
+          </div>
           {/* <MainHomeRightSideBar  properties={properties} /> */}
         </div>
       </Grid>

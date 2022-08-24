@@ -15,10 +15,12 @@ import { useParams } from "react-router-dom"
 import SetStatusEleAudio, {
   SelectItemToPlay
 } from "../../util/Functions/SetStatusEleAudio"
+import Facebook from "../SkeletonLoading"
 function DetailPlaylist() {
   const EleTop = useRef(null)
   const { id } = useParams()
   const EleContainer = useRef(null)
+  const [IsLoading, SetIsLoading] = useState(false)
   const [isLoop, SetIsLoop] = useState(false)
   const [properties, SetProperties] = useState({
     Des: "",
@@ -28,7 +30,7 @@ function DetailPlaylist() {
   })
   const param = new URLSearchParams(window.location.search).get("id")
   // console.log(param,"New Id Playlist Incoming")
-  console.log(param, "-------")
+  // console.log(param, "-------")
   const GlobalState = useSelector(state => state)
   // console.log(GlobalState.SongQueue);
   const dispatch = useDispatch()
@@ -36,8 +38,8 @@ function DetailPlaylist() {
     SelectItemToPlay(GlobalState.EleAudio, GlobalState.isPlaying)
     dispatch(SetActivePlay(!GlobalState.isPlaying))
   }
-
   useEffect(() => {
+    SetIsLoading(true)
     fetch(`https://sportifymainserver.herokuapp.com/detail/${param}`)
       .then(res => res.json())
       .then(items => {
@@ -50,10 +52,12 @@ function DetailPlaylist() {
           artistsNames: artistsNames,
           songs: song.items
         })
+        SetIsLoading(false)
+
         EleTop.current.scrollIntoView({
           behavior: "auto"
         })
-        console.log(data, sortDescription, title, song, artistsNames)
+        // console.log(data, sortDescription, title, song, artistsNames)
       })
       .catch(e => {
         console.log("Detail Playlist ", e)
@@ -76,7 +80,7 @@ function DetailPlaylist() {
     const idFiltered = properties.songs.filter(function (item, idx) {
       return item.encodeId != id
     })
-    console.log("Flitered 58", idFiltered)
+    // console.log("Flitered 58", idFiltered)
     dispatch(SetSongQueue(properties.songs ? properties.songs : []))
     // dispatch(SetActivePlay(true));
   }
@@ -105,6 +109,8 @@ function DetailPlaylist() {
           )}
           <FontAwesomeIcon icon={IconSolid.faHeart} />
         </div>
+        {IsLoading && <Facebook />}
+
         <ul className={`${style.ListSong}`}>
           {properties.songs.map(function (item, idx) {
             {

@@ -1,10 +1,11 @@
 import style from "./Search.module.css"
+import { Grid } from "@mui/material"
 
 function Search() {
   return (
-    <div>
-      <h1>Seach Section</h1>
-    </div>
+    <>
+      
+    </>
   )
 }
 

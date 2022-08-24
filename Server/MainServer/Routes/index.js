@@ -17,7 +17,7 @@ module.exports = function Routes(app) {
         res.status(404).json(e);
       });
   });
- 
+
   //GET song
 
   app.get("/song/:idPlaylist", (req, res) => {
@@ -70,12 +70,32 @@ module.exports = function Routes(app) {
         res.status(404).json(e);
       });
   });
- 
-  app.get("/search",async (req,res)=>{  
+
+  app.get("/search", async (req, res) => {
     let searchText = req.query.q;
-    console.log(searchText)
+    console.log(searchText);
     let data = await ZingMp3.search(searchText ? searchText : "");
-    res.json(data)
-    
+    res.json(data);
+  });
+
+  app.get("/movie", async (req, res) => {
+    let searchText = req.query.q;
+    searchText == "" && res.json(null);
+    let data = await ZingMp3.getVideo(searchText);
+    res.json(data);
+  });
+  app.get("/artist",async (req,res)=>{
+    let searchText = req.query.q;
+    let data = await ZingMp3.getArtist(searchText);
+    res.json(data);
+
+  })
+
+  app.get("/listsongbyartist",async (req,res)=>{
+    let searchText = req.query.q;
+    let page = req.query.page ? req.query.page : 1;
+
+    let data = await ZingMp3.getListArtistSong(searchText,page,15);
+    res.json(data);
   })
 };
